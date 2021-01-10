@@ -1,0 +1,12 @@
+devops:
+  name: devops
+  description: TIL - DevOps
+  cover: False  # assets/images/speeches.jpg
+aws:
+  name: aws
+  description: TIL - AWS
+  cover: False
+backend:
+  name: backend
+  description: TIL - Back-end
+  cover: False
