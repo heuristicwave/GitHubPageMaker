@@ -50,7 +50,7 @@ favicon: assets/built/images/water-wave-48.png
 
 production_url: https://heuristicwave.github.io
 
-source_url: https://github.com/heuristicwave/heuristicwave/
+source_url: https://github.com/heuristicwave/GitHubPageMaker
 # blogmaker(jekyll source folder)에 대한 github repository
 
 # Social info
@@ -98,7 +98,7 @@ safe: False
 lsi: False
 
 username: heuristicwave
-repo: heuristicwave.github.io
+repo: GitHubPageMaker
 # username : travis-ci와 연동하는 github의 username
 # repo: travis-ci와 연동하는 github의 repository이름
 # https://github.com/<username>/<repository>
@@ -107,7 +107,7 @@ branch: master
 
 relative_source:
 
-destination: ../[GitHubPage]]/
+destination: ./output/
 # compile된 결과가 생성되는 폴더
 # 이 폴더안의 내용을 github repository(https://username.github.io)에 push
 # 만약 Travis-CI를 이용할 예정이면 이 부분을 git submodule로
