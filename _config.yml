@@ -1,5 +1,7 @@
 # Jekyll configuration
 markdown: kramdown
+kramdown:
+  parse_block_html: true
 # kramdown : markdown에서 불편한 사항을 개선한 형태.
 encoding: 'UTF-8'
 
