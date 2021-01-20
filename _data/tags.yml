@@ -1,3 +1,7 @@
+projects:
+  name: projects
+  description: Toy projects and projects
+  cover: assets/built/images/project.png
 devops:
   name: devops
   description: TIL - DevOps
