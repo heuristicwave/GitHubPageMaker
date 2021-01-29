@@ -131,4 +131,3 @@ exclude:
   - assets/css
   - assets/images
   - _posts/et-cetera
-  - _posts/devops
