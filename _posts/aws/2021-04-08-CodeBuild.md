@@ -149,7 +149,7 @@ artifacts:
 EOF
 ```
 
-지금까지 작성된 인프라를 `terraform stae list`명령어를 통해 확인하면 아래와 같습니다.
+지금까지 작성된 인프라를 `terraform state list`명령어를 통해 확인하면 아래와 같습니다.
 ```shell
 ❯ terraform state list
 aws_codebuild_project.codebuild
@@ -161,7 +161,7 @@ aws_iam_role_policy_attachment.codebuild-attach
 aws_s3_bucket.artifact_bucket
 ```
 
-<details><summary markdown="span">생성한 인프라가 위와 같지 않을 경우</summary>
+<details><summary markdown="span">생성한 인프라가 위와 같지 않을 경우, 👉 Click</summary>
 
 실수로 의도치 않은 인프라가 프로비저닝 되었다면 2가지 방법을 통해 원 상태로 복구 할 수 있습니다.
 1. `terraform destroy` 명령어로 특정 인프라만 되돌리거나 프로비저닝 하고싶은 경우, `-target` 옵션과 함께 resource 명으로 명령어를 작성합니다. <br>
@@ -169,8 +169,6 @@ aws_s3_bucket.artifact_bucket
 2. 잘못 작성한 코드를 수정 후, `terraform apply`명령어를 적용하여 최신 상태의 인프라를 반영합니다.
 
 </details>
-
-<br>
 
 
 <br>

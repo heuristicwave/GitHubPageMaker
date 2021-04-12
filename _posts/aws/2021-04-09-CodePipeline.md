@@ -146,7 +146,7 @@ resource "aws_codepipeline" "pipeline" {
 1편에서 작성한 CodeCommit을 Stage의 Source, 2편에서 작성한 CodeBuild를 Build단계 지정했습니다.
 `terraform apply, plan` 명령어를 차례로 반영해 오류가 없는지 확인합니다.
 
-지금까지 작성된 인프라를 `terraform stae list`명령어를 통해 확인하면 아래와 같습니다.
+지금까지 작성된 인프라를 `terraform state list`명령어를 통해 확인하면 아래와 같습니다.
 ```shell
 ❯ terraform state list
 aws_codebuild_project.codebuild
@@ -171,17 +171,17 @@ CodeCommit에서 발생한 이벤트가 CodePipeline으로 트리거되기 위�
 ➕ 아래 코드를 `codepipeline.tf`에 추가하고 인프라를 생성해주세요.
 {% gist heuristicwave/5b566b2cc70337501a4d60b71215930f %}
 
+## Result
+Trigger 까지 정상적으로 적용하고 테스트용으로 활용할 아무 Dockerfile을 CodeCommit에 Push합니다.
+다시 [CodePipeline 콘솔](https://console.aws.amazon.com/codepipeline) 에 접속해 우상단에 위치한 `변경사항 릴리스`를 누르면,
+아래와 같이 정상적으로 코드 파이프라인이 작동하여 운영되는 것을 확인 할 수 있습니다.
+![terraform_demo](../../assets/built/images/post/ecr_terraform_demo.png)
+
 ## Cleanup
 S3 bucket은 빈상태여야 제거가 가능하기에 [S3 콘솔](https://console.aws.amazon.com/s3/home) 에서 `ecr-pipeline`의 데이터를 모두 삭제합니다.
 이어서 `terraform destory` 명령어로 모든 리소스를 회수합니다.
 
 <br>
-
-## Result
-Trigger 까지 정상적으로 적용하고 아무 Dockerfile을 CodeCommit에 Push합니다.
-다시 [CodePipeline 콘솔](https://console.aws.amazon.com/codepipeline) 에 접속해 우상단에 위치한 `변경사항 릴리스`를 누르면,
-아래와 같이 정상적으로 코드 파이프라인이 작동하여 운영되는 것을 확인 할 수 있습니다.
-![terraform_demo](../../assets/built/images/post/ecr_terraform_demo.png)
 
 총 3편에 걸쳐서 테라폼으로 **최소한의 리소스**로 ECR Pipeline 구축법을 알아보았습니다. (CloudWatch 기능을 추가해 CodePipeline을 구축해보세요 👍)
 해당 과정을 통해 AWS 인프라 생성법과, IAM 활용법, Variable, Output, tfvars 등을 활용해 코드를 작성하는 법을 공부했습니다.
