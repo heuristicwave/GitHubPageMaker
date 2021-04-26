@@ -56,8 +56,8 @@ into the {body} of the default.hbs template -->
             {% if site.subscribers %}
                 <section class="subscribe-form">
                     <h3 class="subscribe-form-title">Subscribe to {{ site.title }}</h3>
-                    <p>Get the latest posts delivered right to your inbox</p>
-                    {% include subscribe-form.html placeholder="youremail@example.com" %}
+                    <p>Get the latest posts delivered right via RSS</p>
+                    {% include subscribe-form.html placeholder="https://heuristicwave.github.io" %}
                 </section>
             {% endif %}
 
