@@ -21,7 +21,7 @@ EKS 노드에서 사용 가능한 Pod의 개수는 몇 개일까?
 
 ## Build Up
 
-[쿠버네티스 도규먼트](https://kubernetes.io/docs/setup/best-practices/cluster-large/) 에 따르면 노드당 110개의 포드를 생성할 수 있으며, 노드는 5000개까지 생성 가능해 총 15만 개의 드가 생성 가능하다고 한다. <br>
+[쿠버네티스 도규먼트](https://kubernetes.io/docs/setup/best-practices/cluster-large/) 에 따르면 노드당 110개의 포드를 생성할 수 있으며, 노드는 5000개까지 생성 가능해 총 15만 개의 포드가 생성 가능하다고 한다. <br>
 [GCP의 GKE 가이드](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr?hl=en#cidr_ranges_for_clusters) 에 따르면 기본 클러스터 노드 하나에 최대 110개의 포드가 생성 가능하다고 한다. <br>
 구글링을 통해 확인하니, 노드에서 포드의 갯수가 증가할수록 kubelet, cAdvisor 등과 같은 K8s 에이전트에 오버헤드를 발생시키므로 110개 정도를 권장한다고 한다.
 그래서 그런지 [kubelet docs](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) 에서도 아래와 같은 max-pods가 110을 기본값으로 가진다.
@@ -62,7 +62,7 @@ K9s 쉘을 통해 총 38개의 포드가 확인되었고 38개 중 `aws-node`, `
 ## Maximum Pods 변경하기
 
 EKS에서 Maximum Pods를 결정 짓는 요소는 ENI다. 그러나 클러스터의 노드그룹을 생성할 때 kubelet의 `max-pods` 값을 변경해 커스터마이징 할 수 있다. 
-[AWS Docs](https://docs.aws.amazon.com/eks/latest/userguide/cni-custom-network.html) 에서 다음과 같은 불친절한? 설명을 통해 ENI와 별개로 max-pods를 제어할 수 있는 힌트를 얻었다.
+[AWS Docs](https://docs.aws.amazon.com/eks/latest/userguide/cni-custom-network.html) 에서 다음과 같은 (불친절한?) 설명을 통해 ENI와 별개로 max-pods를 제어할 수 있는 힌트를 얻었다.
 ![max-pods.png](../../assets/built/images/post/bootstrapArg.png)
 공식 문서에서 설명이 굉장히 빈약하지만, EKS에서 노드 그룹을 커스텀으로 생성할 때 **Launch templates**의 `UserData`를 아래와 같이 정의하면 Maximum Pods가 변경된다.
 
@@ -94,14 +94,14 @@ gcloud container clusters create CLUSTER_NAME \
 
 ### 👀 Labs 2
 
-아래 사진의 왼쪽은 Labs 1의 Pure한 t3.medium, 오른쪽은 `max-pods`를 지정한 Custom t3.medium이다. 콘솔화면에서 스펙은 지만 할당된 포드의 수가 다르다.
+아래 사진의 왼쪽은 Labs 1의 Pure한 t3.medium, 오른쪽은 `max-pods`를 지정한 Custom t3.medium이다. 콘솔화면에서 스펙은 같지만 할당된 포드의 수가 다르다.
 
 ![max-pods-10.png](../../assets/built/images/post/max10pods.png)
 
 ## Result
 
 지금까지 다양한 방법을 통해 EKS에서 Maximum Pods를 파악하는 방법과 변경하는 방법 배웠다.
-AWS에서는 ENI라는 *가상 네트워크 카드를 나타내는 논리적 네트워크 구성 요소* 덕분에 인스턴스 타입마다 생성될 수 있는 포드에 수가 달랐다.
+AWS에서는 ENI라는 *가상 네트워크 카드를 나타내는 논리적 네트워크 구성 요소* 덕분에 인스턴스 타입마다 생성될 수 있는 포드의 수가 달랐다.
 그 밖에도 GCP에 쿠버네티스의 설계 철학을 그대로 이어받아 kubelet의 max-pods 값이 동일하고 클러스터 생성 순간에도 max-pods 설정에 대한 자유도가 높다는 사실을 알 수 있었다.
 
 어떠한 방법이 더 우위에 있는지 결론짓기 어렵지만, CSP의 쿠버네티스 max-pods 생성 원리를 파악하여 최적의 IP 할당에 도움이 되면 좋겠다.
