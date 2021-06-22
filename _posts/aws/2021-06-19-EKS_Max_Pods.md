@@ -3,7 +3,7 @@ layout: post
 current: post
 cover:  assets/built/images/background/eks.png
 navigation: True
-title: Deep Dive into EKS max pods
+title: Look into EKS max pods
 date: 2021-06-19 18:00:00
 tags: [aws, devops, backend]
 class: post-template
@@ -13,7 +13,7 @@ author: HeuristicWave
 
 EKS 노드에서 사용 가능한 Pod의 개수는 몇 개일까?
 
-# Overview
+# Preview
 
 이번 포스팅에서는 EKS의 노드 그룹에서는 최대 몇 개의 포드(Private IP)가 할당 가능하고 어떠한 방법으로 최대 포드의 개수를 제어할 수 있는지 알아보자.
 
