@@ -95,7 +95,7 @@ resource "aws_lb" "test" {
 <br>
 
 **HashiCorp**가 정의한 [Self-Service Infrastructure](https://www.hashicorp.com/products/terraform/self-service-infrastructure) 게시물을 보면,
-Self-Service Infra가 어떤 의미인지 더 쉽게 다가옵니다. *(첨부된 링크를 통해 셀프서비스의 점을 꼭 한번 읽어보세요!)*
+Self-Service Infra가 어떤 의미인지 더 쉽게 다가옵니다. *(첨부된 링크를 통해 셀프서비스의 장점을 꼭 한번 읽어보세요!)*
 
 #### 기존 방법
 
