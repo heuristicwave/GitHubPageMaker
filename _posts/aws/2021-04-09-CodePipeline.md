@@ -5,7 +5,7 @@ cover:  assets/built/images/post/CodePipeline.png
 navigation: True
 title: ECR CodePipeline with Terraform Ⅲ
 date: 2021-04-09 00:00:00
-tags: [aws, devops]
+tags: [aws, devops, terraform]
 class: post-template
 subclass: 'post tag-aws'
 author: HeuristicWave
