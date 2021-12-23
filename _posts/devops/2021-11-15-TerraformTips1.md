@@ -3,7 +3,7 @@ layout: post
 current: post
 cover:  assets/built/images/background/terraform.png
 navigation: True
-title: Terraform Module Tips 1 - Output
+title: Terraform Tips 1 - Module & Output
 date: 2021-11-15 00:00:00
 tags: [devops, terraform]
 class: post-template
@@ -11,10 +11,10 @@ subclass: 'post tag-devops'
 author: HeuristicWave
 ---
 
-Terraform Module과 친해지기 1 - Output
+Terraform 더 익숙하게 1 - Module & Output
 
 
-## 서문
+## Intro
 
 **Terraform Module**을 잘 활용하면 본인이 원하는 대로 인프라를 레고처럼 조립할 수 있습니다.
 레고처럼 인프라를 조립하기 위해서는 모듈 간의 연계가 중요한데요,
@@ -93,11 +93,11 @@ apply를 적용한 *security-group, vpc* 모듈이 내 로컬 머신에 숨어 �
 
 <br>
 
-## 글을 마치며
+## Outro
 
 이렇게 Module의 Output 값을 활용하는 방법을 알게 되니, 테라폼 모듈 조립에 대한 자신감이 생겼습니다. 
-앞으로도 Module을 활용해 다양한 인프라를 구축하고 오픈소스 툴들을 연계하는 방법을 시리즈로 연재할 계획인데, 언제 끝날지 모르겠습니다. 😑
+앞으로도 테라폼에 더 익숙하지기 위한 방법들을 시리즈로 연재할 계획인데, 언제 끝날지 모르겠습니다. 😑
 
-지금까지 테라폼 모듈과 친해지기 Output 편을 읽어주셔서 감사합니다! 잘못된 내용은 지적해 주세요! 😃
+지금까지 테라폼 더 익숙하게 Module & Output 편을 읽어주셔서 감사합니다! 잘못된 내용은 지적해 주세요! 😃
 
 ---
