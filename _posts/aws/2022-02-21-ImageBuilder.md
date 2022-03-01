@@ -5,7 +5,7 @@ cover:  assets/built/images/background/imagebuilder.png
 navigation: True
 title: Create Immutable Server using AWS Image Builder & Auto Scaling Group
 date: 2022-02-21 00:00:00
-tags: [aws]
+tags: [aws, devops]
 class: post-template
 subclass: 'post tag-aws'
 author: HeuristicWave
