@@ -56,6 +56,9 @@ INFO | (pkg/trace/info/stats.go:104 in LogStats)                # Line 2
 <details><summary markdown="span">🖍 정답 보기</summary>
 
 > **INFO** \| (pkg/trace/info/stats.go:104 in LogStats)                # Line 1
+
+^(caret) 은 전체 문자열의 시작 위치에만 일치하므로, Line 1 만이 match 됩니다.
+
 </details>
 
 ### Case 2️⃣
