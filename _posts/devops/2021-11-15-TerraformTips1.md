@@ -100,4 +100,10 @@ apply를 적용한 *security-group, vpc* 모듈이 내 로컬 머신에 숨어 �
 
 지금까지 테라폼 더 익숙하게 Module & Output 편을 읽어주셔서 감사합니다! 잘못된 내용은 지적해 주세요! 😃
 
+<br>
+
 ---
+
+{% include terraform_tips.html %}
+
+<br>
