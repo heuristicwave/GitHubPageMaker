@@ -1,7 +1,7 @@
 projects:
-  name: projects
-  description: Toy projects and projects
-  cover: assets/built/images/project.png
+  name: extracurricular
+  description: Extracurricular Activities
+  cover: assets/built/images/ea.png
 devops:
   name: devops
   description: TIL - DevOps

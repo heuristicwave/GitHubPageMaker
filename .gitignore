@@ -3,7 +3,6 @@
 
 # Jekyll build
 /_site/
-assets/built/images/post/_site
 
 .jekyll-metadata
 #Gemfile.lock
