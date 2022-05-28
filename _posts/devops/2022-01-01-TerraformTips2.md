@@ -19,11 +19,40 @@ Terraform 더 익숙하게 2 - Data & Index
 이번 포스팅은 Tip이라 하기에는 부끄러운 사소한 지식이지만, 제가 자주 실수 하는 내용이라 글로 남기게 되었습니다. **Terraform Data**를 잘 활용하면 디스크 이미지, 코드로 정의한 다양한 리소스 및 클라우드 공급자 API에서 가져온 정보들을 알 수 있습니다.
 모든 `Data Sources`가 동일한 방법으로 간편하게 조회할 수 있으면 좋겠지만, 막상 사용하려고 하면 이런 저런 문제들을 만나게 됩니다.
 
-🥲 본격적으로 글을 들어가기 앞서, 이번편도 사실 제 글보다 더 좋은 학습 장소가 있어서 함께 첨부합니다! 
-
-- [Tutorial : Query Data Sources](https://learn.hashicorp.com/tutorials/terraform/data-sources)
+공식문서([Tutorial : Query Data Sources](https://learn.hashicorp.com/tutorials/terraform/data-sources)) 에서도 Data 활용방법을 배울 수 있지만,
+이번 포스팅에서는 3가지 예제와 함께 리소스를 Query하는 방법을 배워 보겠습니다.
 
 <br>
+
+## Query AMI
+
+AWS의 최신 AMI는 주기적으로 갱신됩니다. 따라서 재사용 가능한 코드를 작성하기 위해, 항상 최신 AMI를 참조하는 코드를 작성하는데 다음과 같은 방법을 사용할 수 있습니다.
+
+```shell
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+
+  owners = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-kernel-*-hvm-*-x86_64-gp2"]
+  }
+
+  filter {
+    name   = "owner-alias"
+    values = ["amazon"]
+  }
+}
+
+output "name" {
+  value = data.aws_ami.amazon_linux.id
+}
+```
+
+위와 같은 방법으로 `filter`와 `owners` 값을 조정하며 어떤 이미지든지 id 값(output)을 얻어 낼 수 있습니다.
+예를 들어 ECS와 EKS에서 Optimized AMI를 사용하는 경우, 다음과 같은 filter 값을 줄 수 있습니다.
+`values = ["amzn2-ami-ecs-hvm-*-x86_64-ebs"]`
 
 ## Query AZ
 
