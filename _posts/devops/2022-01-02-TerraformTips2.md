@@ -4,7 +4,7 @@ current: post
 cover:  assets/built/images/background/terraform.png
 navigation: True
 title: Terraform Tips 2 - Data & Index
-date: 2022-01-01 00:00:00
+date: 2022-01-02 00:00:00
 tags: [devops, terraform]
 class: post-template
 subclass: 'post tag-devops'
@@ -52,7 +52,8 @@ output "name" {
 
 위와 같은 방법으로 `filter`와 `owners` 값을 조정하며 어떤 이미지든지 id 값(output)을 얻어 낼 수 있습니다.
 예를 들어 ECS와 EKS에서 Optimized AMI를 사용하는 경우, 다음과 같은 filter 값을 줄 수 있습니다.
-`values = ["amzn2-ami-ecs-hvm-*-x86_64-ebs"]`
+
+> values = ["amzn2-ami-ecs-hvm-*-x86_64-ebs"]
 
 ## Query AZ
 
@@ -131,7 +132,7 @@ resource "aws_lb_target_group" "sample_resource" {
 지금까지 Data를 활용해 각종 리소스들을 검색하는 방법을 알아 보았습니다.`vpc_id`도 `az`와 같이 별도의 index 과정 없이,
 간편한 조회가 가능하면 좋겠습니다. (제가 아직 방법을 모르는 것일 수도 있어요!)
 
-지금까지 테라폼 더 익숙하게 Module & Output 편을 읽어주셔서 감사합니다! 잘못된 내용은 지적해 주세요! 😃
+지금까지 테라폼 더 익숙하게 Data & Index 편을 읽어주셔서 감사합니다! 잘못된 내용은 지적해 주세요! 😃
 
 <br>
 
