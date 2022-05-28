@@ -38,11 +38,6 @@ data "aws_ami" "amazon_linux" {
     name   = "name"
     values = ["amzn2-ami-kernel-*-hvm-*-x86_64-gp2"]
   }
-
-  filter {
-    name   = "owner-alias"
-    values = ["amazon"]
-  }
 }
 
 output "name" {

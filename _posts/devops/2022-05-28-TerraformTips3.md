@@ -4,7 +4,7 @@ current: post
 cover:  assets/built/images/background/terraform.png
 navigation: True
 title: Terraform Tips 3 - Refresh & Replace
-date: 2022-05-29 00:00:00
+date: 2022-05-28 00:00:00
 tags: [devops, terraform]
 class: post-template
 subclass: 'post tag-devops'
