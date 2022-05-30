@@ -24,19 +24,18 @@ Terraform에서는 **Configuration Drift**(정의한 형상과 달라지는 경�
 
 ## ♻️ Refresh
 
+`refresh` 명령어는 Configuration Drift가 발생했을 때, 현재 상태를 `terraform.tfstate`에 반영해 현재 인프라의 상태로 최신화시키는 명령어입니다.
 문서에는 다음과 같이 기재되어 있지만, 처음 접한다면 무엇을 말하는지 쉽게 와닿지 않습니다.
 
 > The `terraform refresh` command reads the current settings from all managed remote objects and updates the Terraform state to match. <br>
 > `terraform refresh` 명령어는 원격 객체의 현재 상태를 읽어 Terraform state와 일치시킵니다.
 
-클라우드 환경에서 클러스터를 운용하면 인스턴스의 Scale이 변화함에 따라 인스턴스 ID 값도 변합니다.
+Refresh 명령어는 다음과 같은 상황에서 사용합니다. 클라우드 환경에서 클러스터를 운용하면 인스턴스의 Scale이 변화함에 따라 인스턴스 ID 값도 변합니다.
 이 경우 코드로 정의한 상태는 프로비저닝 당시 시점을 기억하지만, 실제 인프라의 현상은 최신 인스턴스의 상태를 가지고 있으므로 Drift가 발생합니다.
 
 ![state](../../assets/built/images/post/terraform/state.png)
 
-위와 같은 상황에서 `refresh` 명령어를 사용하면 `terraform.tfstate`의 값이 현재 인프라의 상태와 일치하게 됩니다.
-
-하지만, 위 명령어는 deprecate 되었습니다. 왜냐하면 관리자가 무엇이 변경되는지 알지 못하고 `tfstate`가 최신화되기 때문입니다.
+위 상황에서 Refresh 명령어로 *코드의 상태와 인프라의 현재 상태를 일치*시킬 수 있지만, 해당 명령어는 **deprecate** 되었습니다. 왜냐하면 관리자가 무엇이 변경되는지 알지 못하고 `tfstate`가 최신화되기 때문입니다.
 그래서 테라폼 v0.15.4.에서부터는 `plan`과 `apply`에 `-refresh-only` 옵션을 제공하기 시작했습니다.
 
 ### --refresh-only
@@ -49,9 +48,10 @@ Terraform에서는 **Configuration Drift**(정의한 형상과 달라지는 경�
 
 ![refresh-only](../../assets/built/images/post/terraform/refresh-only.png)
 
-위 사진에서, elb의 AutoScalingGroup 내의 인스턴스가 바뀌어 최신화됨과, 기존에 콘솔에서 변경한 health_check 값을 확인할 수 있습니다.
+위 사진에서는 elb의 AutoScalingGroup 내의 인스턴스가 바뀌어 최신화됨과, 제가 의도적으로 콘솔에서 변경한 health_check 값을 확인할 수 있습니다.
 
-이어서 해당 차이를 `terraform apply --refresh-only` 명령어로 `*.tfstate`를 최신화 시킵니다.
+이처럼 항상 IaC의 형상을 변경하기 전, `plan`을 통한 사전 검토 기능을 제공하기 위해 `--refresh-only` 옵션이 제공되었습니다.
+`plan`으로 문제없음을 확인했다면, 이어서 `terraform apply --refresh-only` 명령어로 `*.tfstate`를 최신화 시킵니다.
 
 ### ⚠️ 주의
 
@@ -67,7 +67,7 @@ Replace를 설명하기 앞서, 기존 테라폼에는 `taint`라는 명령어�
 > The `terraform taint` command informs Terraform that a particular object has become degraded or damaged. <br>
 > `terraform taint` 명령어는 특정 객체가 저하되거나 손상되었음을 Terraform에 알립니다.
 
-운영을 하다 보면 **인프라를 정의한 코드는 그대로**인 상태에서 **리소스만 교체**할 경우가 발생합니다.
+Taint 명령어는 **인프라를 정의한 코드는 그대로**인 상태에서 **리소스만 교체**할 경우에 사용합니다.
 저의 경우 스파이크성 트래픽을 갑자기 받아 로드밸런서의 성능이 저하되었을 때, ELB를 교체한 경험이 있습니다.
 
 이런 상황에서 성능이 저하된 혹은 **교체가 필요한 리소스** 객체만을 on/off 방식으로 **주석 처리 및 해제**하며 `apply` 명령어로 교체할 수 있지만,
@@ -78,17 +78,17 @@ Replace를 설명하기 앞서, 기존 테라폼에는 `taint`라는 명령어�
 ### 🌗 -replace
 
 `-replace` 옵션은 `taint` 명령어와 동일하게 작용하며, `untaint` 명령어를 칠 필요가 없습니다.
+코드는 그대로지만 리소스 객체가 변경되는 Replace 명령어 사용법은 다음과 같습니다.
 
 ```shell
 $ terraform apply -replace="aws_instance.example[0]"
 ```
 
+교체할 리소스 인자값를 찾기 위해, `terraform state list` 명령어로 target을 확인할 수 있습니다.
+
 ![replace](../../assets/built/images/post/terraform/replace.png)
 
-교체가 필요한 리소스 객체를 파악하기 위해 아래 `state list` 명령어로 target을 찾아 `-replace` 옵션과 함께 지정하면,
-코드는 그대로지만 리소스 객체가 변경되는 것을 확인할 수 있습니다.
-
-`-replace` 옵션 역시, `--refresh-only` 옵션과 동일하게 `plan` 명령어와 함께 적용하여 변경 지점을 미리 파악
+💡 `-replace` 옵션 역시, `--refresh-only` 옵션과 동일하게 `plan` 명령어와 함께 적용하여 변경 지점을 미리 파악하고
 변경되는 리소스에 대한 검토를 하는 습관을 들입시다!
 
 <br>
