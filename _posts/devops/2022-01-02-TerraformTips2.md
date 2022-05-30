@@ -11,12 +11,13 @@ subclass: 'post tag-devops'
 author: HeuristicWave
 ---
 
-Terraform 더 익숙하게 2 - Data & Index
+Terraform 더 익숙하게 2 - Data & Index <br>
+AWS 리소스로 알아보는 terraform Data 활용 팁
 
 
 ## Intro
 
-이번 포스팅은 Tip이라 하기에는 부끄러운 사소한 지식이지만, 제가 자주 실수 하는 내용이라 글로 남기게 되었습니다. **Terraform Data**를 잘 활용하면 디스크 이미지, 코드로 정의한 다양한 리소스 및 클라우드 공급자 API에서 가져온 정보들을 알 수 있습니다.
+이번 포스팅은 Tip이라 하기에는 부끄러운 사소한 지식이지만, 제가 자주 잊어버리는 내용이라 글로 남기게 되었습니다. **Terraform Data**를 잘 활용하면 디스크 이미지, 코드로 정의한 다양한 리소스 및 클라우드 공급자 API에서 가져온 정보들을 알 수 있습니다.
 모든 `Data Sources`가 동일한 방법으로 간편하게 조회할 수 있으면 좋겠지만, 막상 사용하려고 하면 이런 저런 문제들을 만나게 됩니다.
 
 공식문서([Tutorial : Query Data Sources](https://learn.hashicorp.com/tutorials/terraform/data-sources)) 에서도 Data 활용방법을 배울 수 있지만,
@@ -71,20 +72,22 @@ data "aws_ami" "amazon_linux_eks" {
 }
 ```
 
-그러나 위 Quert의 결과 값을 [공식 문서](https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/eks-optimized-ami.html) 에 기재된 AMI ID와 비교해 보면,
+그러나 위 Query의 결과 값을 [공식 문서](https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/eks-optimized-ami.html) 에 기재된 AMI ID와 비교해 보면,
 **x86** ID가 아닌, **x86 가속** ID 값과 일치한 다는 것을 알 수 있을 겁니다.
-**x86 가속** gpu가 사용 가능한 Optimized AMI입니다. gpu를 사용하는 노드의 명명 규칙이 `amazon-eks-gpu`로 시작하기 때문에 위 filter 조건으로는 gpu 노드가 조회됩니다.
+문서에 기재된 **x86 가속**은 gpu가 사용 가능한 Optimized AMI입니다. gpu를 사용하는 노드의 명명 규칙이 `amazon-eks-gpu`로 시작하기 때문에 위 filter 조건으로는 gpu 노드가 조회됩니다.
 
-그렇다면 일반 x86 노드는 어떻게 조회해야 할까요? 어느 문서에도 기재되어 있지 않지만,
-대략적인 명명 규칙을 유추하여 보니 일반 EKS 노드는 다음과 같은 필터를 사용해야 한다는 것을 알게 되었습니다. 🧐
+그렇다면 일반 x86 노드는 어떻게 조회해야 할까요? 🧐 어느 문서에도 기재되어 있지 않지만,
+대략적인 명명 규칙을 유추하여 보니 일반 EKS 노드는 다음과 같은 필터를 사용해야 한다는 것을 알게 되었습니다.
 
 > values = ["amazon-eks-node-1.22-*"]
+> 
+> value 값의 *prefix* 규칙을 보니 EKS의 버전도 *prefix* 안에 포함되어, <br>
+> 이 값을 응용하면 다양한 버전의 EKS Optimized AMI를 얻을 수 있다는 것을 추측 할 수 있습니다.
 
-위 `prefix` 규칙을 보니 EKS의 버전도 prefix 안에 포함되어 이 값을 응용하면 다양한 버전의 EKS Optimized AMI를 얻을 수 있습니다!
 이외에도 리전마다 다른 Optimized AMI는 `data`에는 명시하지 않았지만, **Provider에 명시한 리전에 종속성**을 갖게 됩니다.
 또 하나의 팁을 드리자면, 만약 Filter에서 지원하지 않는 명명 규칙을 가진 AMI라면 정규식으로도 조회가 가능합니다!
 
-지금까지 실무에 자주 사용되는 다양한 AMI ID를 조회하는 방법을 알아보았습니다. 이제 어떤 AMI라도 조회가 가능하겠죠? 😎
+여기까지 제가 자주 사용하는 다양한 AMI ID를 조회하는 방법을 알아보았습니다. 이제 어떤 AMI라도 조회가 가능하겠죠? 😎
 
 
 ## Query AZ
