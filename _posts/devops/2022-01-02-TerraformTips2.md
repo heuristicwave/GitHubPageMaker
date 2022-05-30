@@ -20,7 +20,7 @@ Terraform 더 익숙하게 2 - Data & Index
 모든 `Data Sources`가 동일한 방법으로 간편하게 조회할 수 있으면 좋겠지만, 막상 사용하려고 하면 이런 저런 문제들을 만나게 됩니다.
 
 공식문서([Tutorial : Query Data Sources](https://learn.hashicorp.com/tutorials/terraform/data-sources)) 에서도 Data 활용방법을 배울 수 있지만,
-이번 포스팅에서는 3가지 예제와 함께 리소스를 Query하는 방법을 배워 보겠습니다.
+이번 포스팅에서는 3가지 예제와 함께 리소스를 Query 하는 방법을 배워 보겠습니다.
 
 <br>
 
@@ -46,9 +46,46 @@ output "name" {
 ```
 
 위와 같은 방법으로 `filter`와 `owners` 값을 조정하며 어떤 이미지든지 id 값(output)을 얻어 낼 수 있습니다.
-예를 들어 ECS와 EKS에서 Optimized AMI를 사용하는 경우, 다음과 같은 filter 값을 줄 수 있습니다.
+예를 들어 ECS의 Optimized AMI를 사용하는 경우, 다음과 같은 filter 값을 줄 수 있습니다.
 
 > values = ["amzn2-ami-ecs-hvm-*-x86_64-ebs"]
+
+ECS와 달리 EKS는 AMI 명명 규칙이 약간 달라 `filter` 기능을 활용해야, 조건에 맞는 Optimized 이미지를 얻을 수 있습니다.
+EKS 이미지의 경우 모든 이미지의 첫 문자열이 `amazon-eks-`으로 시작하기 때문에, `*`를 함께 넣어 Optimized AMI를 얻을 수 있습니다.
+
+```shell
+data "aws_ami" "amazon_linux_eks" {
+  most_recent = true
+
+  owners = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amazon-eks-*"]
+  }
+
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
+}
+```
+
+그러나 위 Quert의 결과 값을 [공식 문서](https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/eks-optimized-ami.html) 에 기재된 AMI ID와 비교해 보면,
+**x86** ID가 아닌, **x86 가속** ID 값과 일치한 다는 것을 알 수 있을 겁니다.
+**x86 가속** gpu가 사용 가능한 Optimized AMI입니다. gpu를 사용하는 노드의 명명 규칙이 `amazon-eks-gpu`로 시작하기 때문에 위 filter 조건으로는 gpu 노드가 조회됩니다.
+
+그렇다면 일반 x86 노드는 어떻게 조회해야 할까요? 어느 문서에도 기재되어 있지 않지만,
+대략적인 명명 규칙을 유추하여 보니 일반 EKS 노드는 다음과 같은 필터를 사용해야 한다는 것을 알게 되었습니다. 🧐
+
+> values = ["amazon-eks-node-1.22-*"]
+
+위 `prefix` 규칙을 보니 EKS의 버전도 prefix 안에 포함되어 이 값을 응용하면 다양한 버전의 EKS Optimized AMI를 얻을 수 있습니다!
+이외에도 리전마다 다른 Optimized AMI는 `data`에는 명시하지 않았지만, **Provider에 명시한 리전에 종속성**을 갖게 됩니다.
+또 하나의 팁을 드리자면, 만약 Filter에서 지원하지 않는 명명 규칙을 가진 AMI라면 정규식으로도 조회가 가능합니다!
+
+지금까지 실무에 자주 사용되는 다양한 AMI ID를 조회하는 방법을 알아보았습니다. 이제 어떤 AMI라도 조회가 가능하겠죠? 😎
+
 
 ## Query AZ
 
