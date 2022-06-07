@@ -11,7 +11,7 @@ subclass: 'post tag-devops'
 author: HeuristicWave
 ---
 
-본 글은 [Kief Morris의 Infrastructure as Code](https://www.oreilly.com/library/view/infrastructure-as-code/9781491924334/) 와 [HashiCorp 백서](https://www.hashicorp.com/resources/unlocking-the-cloud-operating-model-provisioning) 를 읽고 학습한 내용을 기반으로 작성한 글 입니다.
+본 글은 [Kief Morris의 Infrastructure as Code](https://www.oreilly.com/library/view/infrastructure-as-code/9781491924334/ )와 [HashiCorp 백서](https://www.hashicorp.com/resources/unlocking-the-cloud-operating-model-provisioning )를 읽고 학습한 내용을 기반으로 작성한 글 입니다.
 
 <br>
 

@@ -17,8 +17,7 @@ Terraform으로 ECR 파이프라인 구축하기 3 (CodePipeline)
 
 3편에서는 CodePipeline을 생성하고 IAM 정책과 역할을 부여하는 법을 배워보겠습니다.
 
-[문서](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codepipeline)
-를 확인하면 artifact가 담기는 버킷, pipeline을 생성하는 리소스, 관련된 IAM Role과 Policy가 보입니다.
+[문서](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codepipeline )를 확인하면 artifact가 담기는 버킷, pipeline을 생성하는 리소스, 관련된 IAM Role과 Policy가 보입니다.
 테라폼은 선언형 언어이므로 Role과 Resource의 작성 순서가 바뀌어도 상관이 없지만, 콘솔에서 작업할 경우 Role을 먼저 작성하고 리소스를 생성하니 3편에서는 IAM을 먼저 작성하겠습니다.
 
 ### IAM Role
@@ -44,7 +43,7 @@ EOF
 ```
 
 ### IAM Policy
-본래 필요한 정책만을 골라 [정책생성기](https://awspolicygen.s3.amazonaws.com/policygen.html) 에서 생생된 정책을 활용하는 방법이 있지만, 어떤 정책이 필요한지 한번에 맞추기는 너무 어렵습니다.
+본래 필요한 정책만을 골라 [정책 생성기](https://awspolicygen.s3.amazonaws.com/policygen.html )에서 생생된 정책을 활용하는 방법이 있지만, 어떤 정책이 필요한지 한번에 맞추기는 너무 어렵습니다.
 (저의 경우 인터넷에서 타인이 작성한 정책과 에러메시지를 맞아가며 정책을 작성하고 있습니다 😅)<br>
 ➕ 아래 Policy를 방금전 생성한 `codepipeline.tf`에 아래 코드를 추가합니다.
 ```
@@ -162,7 +161,7 @@ aws_iam_role_policy_attachment.codepipeline-attach
 aws_s3_bucket.artifact_bucket
 ```
 
-[CodePipe line 콘솔](https://console.aws.amazon.com/codepipeline) 에서 확인하면 권한이 없어 실패한 화면이 나올 것 입니다.
+[CodePipeline 콘솔](https://console.aws.amazon.com/codepipeline )에서 확인하면 권한이 없어 실패한 화면이 나올 것 입니다.
 이를 해결하기 위해 또 다른 권한이 필요합니다.
 
 ## CodePipeline Trigger
@@ -173,12 +172,12 @@ CodeCommit에서 발생한 이벤트가 CodePipeline으로 트리거되기 위�
 
 ## Result
 Trigger 까지 정상적으로 적용하고 테스트용으로 활용할 아무 Dockerfile을 CodeCommit에 Push합니다.
-다시 [CodePipeline 콘솔](https://console.aws.amazon.com/codepipeline) 에 접속해 우상단에 위치한 `변경사항 릴리스`를 누르면,
+다시 [CodePipeline 콘솔](https://console.aws.amazon.com/codepipeline )에 접속해 우상단에 위치한 `변경사항 릴리스`를 누르면,
 아래와 같이 정상적으로 코드 파이프라인이 작동하여 운영되는 것을 확인 할 수 있습니다.
 ![terraform_demo](../../assets/built/images/post/ecr_terraform_demo.png)
 
 ## Cleanup
-S3 bucket은 빈상태여야 제거가 가능하기에 [S3 콘솔](https://console.aws.amazon.com/s3/home) 에서 `ecr-pipeline`의 데이터를 모두 삭제합니다.
+S3 bucket은 빈상태여야 제거가 가능하기에 [S3 콘솔](https://console.aws.amazon.com/s3/home )에서 `ecr-pipeline`의 데이터를 모두 삭제합니다.
 이어서 `terraform destory` 명령어로 모든 리소스를 회수합니다.
 
 <br>

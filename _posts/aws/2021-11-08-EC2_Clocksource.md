@@ -15,7 +15,7 @@ author: HeuristicWave
 
 # Preview
 
-이번 포스팅에서는 [AWS Well-Architected Labs - Performance Efficiency](https://www.wellarchitectedlabs.com/performance-efficiency/100_labs/100_clock_source_performance/) 에 개재된 **Calculating differences in clock source**
+이번 포스팅에서는 [AWS Well-Architected Labs - Performance Efficiency](https://www.wellarchitectedlabs.com/performance-efficiency/100_labs/100_clock_source_performance/ )에 개재된 **Calculating differences in clock source**
 를 읽고 궁금증이 생겨 구글링을 하다 알게 된 사실들을 의식의 흐름대로 작성한 포스팅입니다.
 
 <br>
@@ -46,7 +46,7 @@ non-nitro 기반의 인스턴스에서 **'리눅스 클럭 소스를 교체하�
 
 ### ⏱ Timestamping
 
-[Red Hat Reference Guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_for_real_time/7/html/reference_guide/chap-timestamping) 에서 어느 정도 제 가려운 부분을 긁어 주었던 포스팅이 있습니다.
+[Red Hat Reference Guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux_for_real_time/7/html/reference_guide/chap-timestamping )에서 어느 정도 제 가려운 부분을 긁어 주었던 포스팅이 있습니다.
 
 기본적으로 멀티프로세서 시스템인 NUMA와 SMP 아키텍처에서는 여러 개의 clock source가 탑재되어 있습니다.
 멀티프로세서 기반의 EC2 인스턴스에서도 아래 명령어로 사용 가능한 clocksource를 확인하면 다음과 같은 결과를 확인할 수 있습니다.
@@ -60,26 +60,26 @@ Red Hat의 실험 결과에 따르면 `tsc > hpet > acpi_pm` 순으로 오버헤
 
 ### ⚙️ Heap Engineering Post
 
-[Running a database on EC2? Your clock could be slowing you down.](https://heap.io/blog/clocksource-aws-ec2-vdso) 을 보면 더 정확한 분석이 있습니다.
+[Running a database on EC2? Your clock could be slowing you down](https://heap.io/blog/clocksource-aws-ec2-vdso )을 보면 더 정확한 분석이 있습니다.
 내용이 어려워 저는 완벽하게 이해하지 못했지만, 읽어보시면 굉장히 좋은 자료인 것 같습니다.
 
 Heap Engineering 해당 포스팅에서 **밀당**을 시도하는데...
 *'tsc에서는 낮은 가능성으로 clock drift 현상이 있어 프로덕션에서는 수행하지 말라'* 고 했다가,
-실제로는 `clock drfit`가 발생하지 않는다며 [AWS가 tsc를 권장했던 슬라이드 자료](https://www.slideshare.net/AmazonWebServices/cmp402-amazon-ec2-instances-deep-dive/24) 를 함께 보여줍니다.
+실제로는 `clock drfit`가 발생하지 않는다며 [AWS가 tsc를 권장했던 슬라이드 자료](https://www.slideshare.net/AmazonWebServices/cmp402-amazon-ec2-instances-deep-dive/24 )를 함께 보여줍니다.
 
 *그냥 맘놓고 `kvm-clock`이 탑재된 인스턴스를 사용하는게 좋을 것 같습니다.*
 
 ### 🎥 Tudum~ 또! Netflix
 
 클라우드를 공부하다 보면 Netflix 가 클라우드에 지대한 영향을 끼친 것 같다고 느낄 때가 많은데, 이번에도 그랬습니다.
-AWS re:Invent 2014에서 Netflix의 [Senior Performance Architect, Brendan Gregg의 발표 자료](https://www.slideshare.net/brendangregg/performance-tuning-ec2-instances/42) 를 보면
+AWS re:Invent 2014에서 Netflix의 [Senior Performance Architect, Brendan Gregg의 발표 자료](https://www.slideshare.net/brendangregg/performance-tuning-ec2-instances/42 )를 보면
 **xen에서 tsc로 교체**하여 **CPU 사용량은 30%, 평균 앱 레이턴시는 43%가 줄었다**고 합니다.
 
 <br>
 
 ## Result
 
-이번에도 구글링으로 딴짓을 하다 보니 많은 사실들을 알게 되었습니다. 사실 [Current generation instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes) 를
+이번에도 구글링으로 딴짓을 하다 보니 많은 사실들을 알게 되었습니다. 사실 [Current generation instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes )를
 사용하면 대부분 위에서 언급한 최적화는 T2 시리즈, Gravition 계열을 제외한 대부분의 인스턴스에서는 기본적으로 적용되어 있습니다.
 그래서 포스팅의 첫 포문을 '몰라도 되지만 ~'이라 지었습니다.
 

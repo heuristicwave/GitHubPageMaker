@@ -20,7 +20,7 @@ AWS 리소스로 알아보는 terraform Data 활용 팁
 이번 포스팅은 Tip이라 하기에는 부끄러운 사소한 지식이지만, 제가 자주 잊어버리는 내용이라 글로 남기게 되었습니다. **Terraform Data**를 잘 활용하면 디스크 이미지, 코드로 정의한 다양한 리소스 및 클라우드 공급자 API에서 가져온 정보들을 알 수 있습니다.
 모든 `Data Sources`가 동일한 방법으로 간편하게 조회할 수 있으면 좋겠지만, 막상 사용하려고 하면 이런 저런 문제들을 만나게 됩니다.
 
-공식문서([Tutorial : Query Data Sources](https://learn.hashicorp.com/tutorials/terraform/data-sources)) 에서도 Data 활용방법을 배울 수 있지만,
+공식문서([Tutorial : Query Data Sources](https://learn.hashicorp.com/tutorials/terraform/data-sources ))에서도 Data 활용방법을 배울 수 있지만,
 이번 포스팅에서는 3가지 예제와 함께 리소스를 Query 하는 방법을 배워 보겠습니다.
 
 <br>
@@ -72,7 +72,7 @@ data "aws_ami" "amazon_linux_eks" {
 }
 ```
 
-그러나 위 Query의 결과 값을 [공식 문서](https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/eks-optimized-ami.html) 에 기재된 AMI ID와 비교해 보면,
+그러나 위 Query의 결과 값을 [공식 문서](https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/eks-optimized-ami.html )에 기재된 AMI ID와 비교해 보면,
 **x86** ID가 아닌, **x86 가속** ID 값과 일치한 다는 것을 알 수 있을 겁니다.
 문서에 기재된 **x86 가속**은 gpu가 사용 가능한 Optimized AMI입니다. gpu를 사용하는 노드의 명명 규칙이 `amazon-eks-gpu`로 시작하기 때문에 위 filter 조건으로는 gpu 노드가 조회됩니다.
 

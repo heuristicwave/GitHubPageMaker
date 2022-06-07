@@ -10,15 +10,15 @@ class: post-template
 subclass: 'post tag-aws'
 author: HeuristicWave
 ---
-본 글은 2021년 4월 30일 [EC2 Image Builder supports Auto Scaling launch template](https://aws.amazon.com/about-aws/whats-new/2021/04/ec2-image-builder-supports-auto-scaling-launch-template/)
-에 소개된 기능을 활용해 Image Builder로 Golden AMI를 만들고,
+본 글은 2021년 4월 30일 [EC2 Image Builder supports Auto Scaling launch template](https://aws.amazon.com/about-aws/whats-new/2021/04/ec2-image-builder-supports-auto-scaling-launch-template/ )에
+소개된 기능을 활용해 Image Builder로 Golden AMI를 만들고,
 해당 이미지로 Auto Scaling Group의 launch template을 업데이트하는 방법을 소개합니다.
 
 # Intro
 
 클라우드를 다루다 보면 **Netflix** 가 여러 분야에서 앞장서 있는 것을 확인할 수 있습니다.
-그중에서 Immutable Server Pattern을 알리는데 기여한 2013년에 발간된 [AMI Creation with Aminator](https://netflixtechblog.com/ami-creation-with-aminator-98d627ca37b0)
-를 꼭 한번 읽어보시기 바랍니다. 과거 넷플릭스는 AWS의 이미지 파일을 생성하기 위해 Aminator라는 도구를 사용했지만,
+그중에서 Immutable Server Pattern을 알리는데 기여한 2013년에 발간된 [AMI Creation with Aminator](https://netflixtechblog.com/ami-creation-with-aminator-98d627ca37b0 )를
+꼭 한번 읽어보시기 바랍니다. 과거 넷플릭스는 AWS의 이미지 파일을 생성하기 위해 Aminator라는 도구를 사용했지만,
 본 포스팅에서는 이미지 빌더로 AMI를 만들고 Auto Scaling Group에 적용시키는 방법을 배워 Immutable Server Pattern을 학습해 보겠습니다. 
 
 <br>
@@ -39,7 +39,7 @@ Immutable Server 대한 내용은 martin fowler 블로그에 소개된 [Immutabl
 구성 변경이 잦은 서버는 깨지기(fragile) 쉽고, 또 장애가 발생할 경우 재현이 어려울뿐더러 변경 시 연쇄적인 장애를 유발할 가능성이 있습니다.
 이를 두고 깨지기 쉬운 눈송이 같다 하여 `Snowflake Server`라 부릅니다.
 이 상황을 피하기 위해, Configuration drift를 피하는 Base Image(Configuration이 발생하면 새롭게 생성)를 활용한 방법을 `Phoenix Server`
-라 부릅니다. *([Phoenix Server](https://martinfowler.com/bliki/PhoenixServer.html) 용어는 마틴 파울러의 동료 [Kornelis Sietsma](https://twitter.com/kornys) 가 제안했다 합니다.)*
+라 부릅니다. *([Phoenix Server](https://martinfowler.com/bliki/PhoenixServer.html) 용어는 마틴 파울러의 동료 [Kornelis Sietsma](https://twitter.com/kornys )가 제안했다 합니다.)*
 
 ![immutableServer](../../assets/built/images/post/imagebuilder/immutableServer.png)
 
@@ -81,8 +81,7 @@ AWS에서 제공하는 AutoScale은 탄력적인 확장과 축소를 제공하�
 
 기존 환경에 0️⃣이 준비되어 있다면 다음 단계인 **Distribution settings**으로 넘어가도 좋습니다.
 
-해당 단계는 제가 굉장히 게으른 관계로 AWS Documentation : [Creating an Auto Scaling group using a launch template](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-launch-template.html)
-으로 대체하겠습니다.
+해당 단계는 제가 굉장히 게으른 관계로 AWS Documentation : [Creating an Auto Scaling group using a launch template](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-launch-template.html )로 대체하겠습니다.
 
 > 💡 만약 기존 환경이 Launch Template이 아닌 `Launch Configurations`으로 구성되어 있을 경우,
 > 콘솔 화면에서 `Copy to launch template` 버튼을 누르시면 손쉽게 lt로 변경 가능합니다. <br>

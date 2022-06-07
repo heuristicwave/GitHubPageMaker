@@ -48,14 +48,14 @@ worker node를 확보하기 위해 EC2의 Auto Scaling Group을 사용하며 **k
 *(실제로 카펜터를 운영해 보면 기존의 Auto Scaling Group을 사용하지 않는 것은 아니지만,
 사용자 입장에서는 고려하지 않아도 되니 k8s layer에서만 관리된다고 해도 틀린 말은 아닌 것 같습니다.)*
 
-[karpenter.sh](https://karpenter.sh/) 의 홈 화면을 보면 간단한 동작 원리를 설명하는 그림이 있습니다.
+[karpenter.sh](https://karpenter.sh/ )의 홈 화면을 보면 간단한 동작 원리를 설명하는 그림이 있습니다.
 karpenter가 unscheduled pods를 관찰하고 있다가 즉시(just-in-time) 최적화된 capacity에 pods를 배포합니다.
 
 ![karpenter works](../../assets/built/images/post/karpenter/karpenter.png)
 
 ### Overprovisioning
 
-과거 EC2의 스케일링을 사용하는 CA에 대한 [공식 문서](https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/cluster-autoscaler.html)에서, 다음과 같은 고려 사항을 확인할 수 있습니다.
+과거 EC2의 스케일링을 사용하는 CA에 대한 [공식 문서](https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/cluster-autoscaler.html )에서, 다음과 같은 고려 사항을 확인할 수 있습니다.
 
 > 노드를 확장하기 전에 노드가 확장될 때까지 기다려야 하므로 배포 대기 시간에 큰 영향을 미칩니다.
 > 노드를 사용할 수 있게 되려면 몇 분 정도 걸릴 수 있으며, 이로 인해 포드 예약 지연 시간이 크게 늘어날 수 있습니다.
@@ -73,7 +73,7 @@ karpenter가 unscheduled pods를 관찰하고 있다가 즉시(just-in-time) 최
 *TMI : 이 글을 보는 시점에는 수정되어 있을 수도 있겠습니다만,
 공식 문서에 기재된 Default Region과 Module의 azs Config 값이 통일되지 않았습니다. 수행 시, 참고하시기 바랍니다.*
 
-공식 문서 [Terraform으로 시작하기](https://karpenter.sh/docs/getting-started-with-terraform/) 의 가이드대로
+공식 문서 [Terraform으로 시작하기](https://karpenter.sh/docs/getting-started-with-terraform/ )의 가이드대로
 Terraform 코드를 실행시키면 EKS 내에 다음과 같은 `karpenter-controller`와 `karpenter-webhook` 포드가 올라온 것을 확인할 수 있습니다.
 ![initial_pods](../../assets/built/images/post/karpenter/initial_pods.png)
 우선, Karpenter가 정말 최적화된 capacity를 제공하는지 확인하기 위해 `t3a` 시리즈의 스펙을 첨부합니다.
@@ -112,7 +112,7 @@ Test 1에서 **Scalue out**(worker node 1대 => 2대) & **Scale up**(t3a.medium 
 정말 빠른 시간 내에 최적의 capacity를 할당하는 모습을 보니 유연하고 높은 성능을 제공한다는 소개가 맞는 것 같습니다.
 
 저는 위 실험에서 인스턴스에 관한 별도의 CRD 값들을 지정하지 않아 karpenter가 `t`시리즈 인스턴스들을 프로비저닝 하였지만,
-운영에서 Karpenter를 사용하기 위해서는 [Provisioner API](https://karpenter.sh/docs/provisioner/)를 읽고 세밀한 manifest 값들을 조정해 주어야 합니다.
+운영에서 Karpenter를 사용하기 위해서는 [Provisioner API](https://karpenter.sh/docs/provisioner/ )를 읽고 세밀한 manifest 값들을 조정해 주어야 합니다.
 
 <br>
 

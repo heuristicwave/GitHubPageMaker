@@ -16,7 +16,7 @@ Terraform으로 ECR 파이프라인 구축하기 2 (ECR, CodeBuild, IAM)
 2편에서는 **ECR**과 **CodeBuild**를 생성하고 **IAM 역할, 정책을 부여**하는 법을 학습합니다.
 
 ## ECR
-ECR 역시 [공식 문서](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) 에서 사용방법을 확인합니다.
+ECR 역시 [공식 문서](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository )에서 사용방법을 확인합니다.
 공식문서에서 `image_scanning_configuration` config를 사용하면 취약점 스캔이 가능하다 설명되어 있지만, 필요하지 않기 때문에 제외하겠습니다.
 더불어, output도 함께 작성하겠습니다.
 ```shell
@@ -54,10 +54,10 @@ variable "source_repo_branch" {
   type        = string
 }
 ```
-ecr 작성을 완료햇으니 `plan, apply` 명령어를 차례로 입력해 인프라를 생성하고 `terraform state list`명령어나 [콘솔](https://console.aws.amazon.com/ecr/home) 에서 생성된 인프라를 확인합니다.
+ecr 작성을 완료햇으니 `plan, apply` 명령어를 차례로 입력해 인프라를 생성하고 `terraform state list`명령어나 [콘솔](https://console.aws.amazon.com/ecr/home )에서 생성된 인프라를 확인합니다.
 
 ## CodeBuild
-CodeBuild를 사용하기 위해 [Terraform 도큐먼트](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codebuild_project) 에서 사용법을 확인합니다.
+CodeBuild를 사용하기 위해 [Terraform 도큐먼트](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codebuild_project )에서 사용법을 확인합니다.
 기존까지의 작업과는 달리 상당히 어려워 보입니다. 그러나 쓱 훝어보면 크게 4가지(bucket, IAM Role과 Policy, Codebuild)로 정리됩니다.
 
 ### Bucket
@@ -109,8 +109,8 @@ resource "aws_iam_role_policy_attachment" "codebuild-attach" {
 ```
 
 ### CodeBuild
-[Terraform 도큐먼트](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codebuild_project) 를 보아도 어떻게 해야 ECR에 적용시킬 수 있는지 알기 어렵습니다.
-우선 CodeBuild를 이해하기 위해 [AWS docs](https://docs.aws.amazon.com/ko_kr/codebuild/latest/userguide/sample-docker.html) 를 읽어봅시다.
+[Terraform 도큐먼트](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codebuild_project )를 보아도 어떻게 해야 ECR에 적용시킬 수 있는지 알기 어렵습니다.
+우선 CodeBuild를 이해하기 위해 [AWS docs](https://docs.aws.amazon.com/ko_kr/codebuild/latest/userguide/sample-docker.html )를 읽어봅시다.
 대략 리소스 이름을 정하고, 환경을 구성하고 빌드를 하기 위한 방법을 정의해야 한다는 사실을 알 수 있습니다.
 CodeBuild가 정의된 아래 코드를 활용해 `codebuild.tf`에 추가합니다.
 {% gist heuristicwave/2ebf79ce3cbdf4a87657b272f9e1d994 %}

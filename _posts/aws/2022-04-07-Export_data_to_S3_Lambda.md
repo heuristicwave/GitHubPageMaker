@@ -28,7 +28,7 @@ author: HeuristicWave
 ### 1️⃣ Log를 담을 Bucket 및 정책 생성하기
 
 Amazon S3 콘솔 화면에 접속해 Log들이 담길 Bucket을 생성하고 이어서 `Permissions`에서 S3 버킷에 대한 권한을 설정합니다.
-해당 방법은 [공식 문서, 1단계와 3단계](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/S3ExportTasksConsole.html) 자세히 설명되어 있습니다.
+해당 방법은 [공식 문서, 1단계와 3단계](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/S3ExportTasksConsole.html )에 자세히 설명되어 있습니다.
 
 > 💡 공식 문서 3단계에서 기재된 `random-string`은 필요에 의한 경우 사용하세요. 해당 글에서는 편의상 생략하였습니다.  
 

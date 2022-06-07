@@ -14,8 +14,8 @@ author: HeuristicWave
 
 # Intro
 
-[AWS re:Invent 2021, 아마존 CTO인 Dr. Werner Vogels 키노트](https://youtu.be/8_Xs8Ik0h1w?t=4666) 
-에서 AWS CDK 라이브러리들을 활용할 수 있는 [Construct Hub](https://constructs.dev/) 가 발표되었습니다.
+[AWS re:Invent 2021, 아마존 CTO인 Dr. Werner Vogels 키노트](https://youtu.be/8_Xs8Ik0h1w?t=4666 )에서
+AWS CDK 라이브러리들을 활용할 수 있는 [Construct Hub](https://constructs.dev/ )가 발표되었습니다.
 보통 AWS 리인벤트에서는 AWS 고유의 서비스들이 소개되는데요,
 이번에 말씀드릴 Construct Hub는 AWS의 솔루션이 아닌 오픈 소스 커뮤니티이자,
 **CDK 라이브러리를 검색하고 공유할 수 있는 장**이라고 할 수 있습니다.
@@ -63,7 +63,7 @@ CDK 프레임워크를 통해 개발자 혹은 클라우드 운영자는 타입�
 
 CDK로 작성된 인프라 코드는 프로그래밍 언어의 이점을 그대로 채택하여,
 해당 언어에 익숙한 사람이라면 YAML로 작성된 CloudFormation 보다 인프라의 환경을 파악하기 쉽습니다.
-실제로 올해 키노트에 언급된 [Liberty Mutual INSURANCE사의 CDK 도입 사례](https://youtu.be/8_Xs8Ik0h1w?t=4872) 에서
+실제로 올해 키노트에 언급된 [Liberty Mutual INSURANCE사의 CDK 도입 사례](https://youtu.be/8_Xs8Ik0h1w?t=4872 )에서
 1500라인의 CloudFormation 코드를 CDK에서 단 14줄로 구현하며 CDK의 뛰어난 가시성을 알렸습니다.
 
 ![cdk_migration](../../assets/built/images/post/construct/cdk2.png)
@@ -77,7 +77,7 @@ CDK로 작성된 인프라 코드는 프로그래밍 언어의 이점을 그대�
 
 ![construct_hub](../../assets/built/images/post/construct/hub1.png)
 
-[Construct Hub](https://constructs.dev/) 의 메인 홈페이지를 확인해 보면 CDK 라이브러리를 검색할 수 있는
+[Construct Hub](https://constructs.dev/ )의 메인 홈페이지를 확인해 보면 CDK 라이브러리를 검색할 수 있는
 '서치 바'와 현재 '지원하는 언어'와 '서비스 프로바이더'(AWS, Datadog, Mongo DB, Aqua Security 등)가 보입니다.
 
 이 중에서도 화면 왼쪽에 위치한 다양한 CDK들의 종류에 대해 궁금증이 생기실 것 같습니다.
