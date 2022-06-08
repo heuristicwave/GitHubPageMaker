@@ -4,14 +4,15 @@ current: post
 cover:  assets/built/images/background/terraform.png
 navigation: True
 title: Terraform Tips 1 - Module & Output
-date: 2021-11-15 00:00:00
+date: 2022-01-01 00:00:00
 tags: [devops, terraform]
 class: post-template
 subclass: 'post tag-devops'
 author: HeuristicWave
 ---
 
-Terraform 더 익숙하게 1 - Module & Output
+Terraform 더 익숙하게 1 - Module & Output <br>
+AWS 리소스로 알아보는 terraform Module 연계 팁
 
 
 ## Intro
