@@ -89,7 +89,7 @@ EOF
 생성된 원격저장소를 사용하기 위해 `terraform output`을 활용해 **export 환경 변수**를 지정합니다.
 
 ```shell
-export tf_source_repo_clone_url_http=$(terraform output source_repo_clone_url_http)
+export tf_source_repo_clone_url_http=$(terraform output -raw source_repo_clone_url_http)
 echo $tf_source_repo_clone_url_http	# 확인
 ```
 
@@ -97,7 +97,7 @@ echo $tf_source_repo_clone_url_http	# 확인
 
 ## Git Setting
 
-CodeCommit의 Repo 활용법은 아래 2가지 방법이 있습니다.
+CodeCommit의 Repo 활용법을 아래 2가지 방법으로 기재하였지만, 해당 실습에서는 1번만 다룹니다.
 
 ### 1. 로컬에 위치한 코드를 CodeCommit에 push하기 (원격저장소가 비어있음)
 
@@ -107,10 +107,30 @@ git init
 git remote add origin $tf_source_repo_clone_url_http
 git remote -v   # 원격 저장소 확인
 ```
-코드를 작성하고 CodeCommit에 Push하기
+
+해당 포스팅의 2 & 3편에서 ECR에 올릴 이미지 파일 생성하기 위해 아래 샘플 **Dockerfile**을 생성하겠습니다.
+```Dockerfile
+cat <<EOF > Dockerfile
+FROM golang:1.12-alpine AS build
+#Install git
+RUN apk add --no-cache git
+#Get the hello world package from a GitHub repository
+RUN go get github.com/golang/example/hello
+WORKDIR /go/src/github.com/golang/example/hello
+# Build the project and send the output to /bin/HelloWorld 
+RUN go build -o /bin/HelloWorld
+
+FROM golang:1.12-alpine
+#Copy the build's output binary from the previous build container
+COPY --from=build /bin/HelloWorld /bin/HelloWorld
+ENTRYPOINT ["/bin/HelloWorld"]
+EOF
+```
+
+작성된 **Dockerfile**을 `Commit`하고, CodeCommit에 `Push`합니다.
 ```shell
-git add .
-git commit -m "First commit"
+git add Dockerfile
+git commit -m "Create Dockerfile"
 git status
 git push origin # master branch로 push
 ```
