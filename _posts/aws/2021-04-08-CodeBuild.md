@@ -75,7 +75,7 @@ EOF
 ➕ S3을 만들때 사용한 `codebuild.tf`에 아래 코드를 추가합니다.
 ```
 resource "aws_iam_role" "codebuild_role" {
-  name = "terraform-codebuild",
+  name = "terraform-codebuild"
   assume_role_policy = <<EOF
 {
    "Version": "2012-10-17",

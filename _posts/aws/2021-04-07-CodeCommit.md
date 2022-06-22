@@ -93,6 +93,10 @@ export tf_source_repo_clone_url_http=$(terraform output -raw source_repo_clone_u
 echo $tf_source_repo_clone_url_http	# 확인
 ```
 
+> **윈도우 환경변수 설정 방법** <br>
+> Powershell : `$Env:Key="Value"` <br>
+> CMD : `set Key="Value"`
+
 <br>
 
 ## Git Setting
