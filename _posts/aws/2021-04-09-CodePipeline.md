@@ -176,6 +176,24 @@ Trigger 까지 정상적으로 적용하고 테스트용으로 활용할 아무 
 아래와 같이 정상적으로 코드 파이프라인이 작동하여 운영되는 것을 확인 할 수 있습니다.
 ![terraform_demo](../../assets/built/images/post/ecr_terraform_demo.png)
 
+마지막으로, 빌드된 ECR 이미지를 다운받아 로컬에서 실행시켜보며 정상적으로 작성되었는지 확인해보겠습니다.
+
+1. ECR에 올라온 이미지를 사용하기 위해 환경변수 세팅 🔨
+   ```shell
+   export tf_image_repo_url=$(terraform output -raw image_repo_url)
+   ```
+2. AWSCLI로 ECR 로그인 (Region명 주의!) 🔑
+   ```shell
+   aws ecr get-login-password --region {YOUR_REGION} | docker login --username AWS --password-stdin $tf_image_repo_url
+   ```
+3. 이미지 `Pull` 후, `Run` 명령어 실행 💻
+   ```shell
+   docker pull $tf_image_repo_url
+   docker run $tf_image_repo_url
+   ```
+
+🏵 Docker 실행 후, Shell에서 *Hello, Go examples!* 메시지를 확인하였다면 성공!
+
 ## Cleanup
 S3 bucket은 빈상태여야 제거가 가능하기에 [S3 콘솔](https://console.aws.amazon.com/s3/home )에서 `ecr-pipeline`의 데이터를 모두 삭제합니다.
 이어서 `terraform destory` 명령어로 모든 리소스를 회수합니다.
