@@ -67,6 +67,19 @@ ECS는 3가지 범주로 리소스를 설정할 수 있습니다.
 > <br><br>
 > 💡 ECS on EC2에서는 Task Size와 Container Size 방식 중 선택 가능하지만, Fargate 방식에서 Task Size는 필수입니다.
 
+<details><summary markdown="span">Hard 🆚 Soft</summary>
+
+ECS의 Container Size를 조절하기 위해 Container definitions에서는 다음과 같은 방법으로 제어합니다.
+- CPU : Unit 단위, 1,024개의 CPU 유닛은 vCPU 1개
+- Memory : Hard/Soft Limits
+    - Hard : Docker의 `--memory` 옵션에 해당하며, 명시한 값만큼 리소스 제약이 생깁니다.
+      때문에 클러스터 인스턴스에서 `docker stats` 명령어를 조회하면 LIMIT 값이 **Hard로 명시한 값**으로 표시됩니다.
+    - Soft : Docker의 `--memory-reservation` 옵션에 해당하며, 명시한 값이 클러스터 인스턴스에 예약됩니다.
+      soft limit이므로 컨테이너 메모리 사용량이 명시한 값의 제한을 넘겨 사용 가능합니다.
+      Hard와는 달리, 클러스터 인스턴스에서 `docker stats` 명령어를 조회하면 LIMIT 값이 **클러스터 인스턴스의 총 자원**으로 표시됩니다
+
+</details>
+
 🥇로 갈수록 더 상위 개념이며, Task Definitions에서는 🥈, 🥉을 활용해 리소스를 제어합니다.
 세밀한 제어를 하고 싶다면 🥈, 🥉을 모두 사용하여 제어할 수 있으나,
 🥉 사용해야 하는 특별한 이유가 없다면 🥈만을 사용해 리소스를 제어하는 것이 용이합니다. 
@@ -135,7 +148,7 @@ CapacityProviderReservation를 목표치(Target capacity)인 100에 맞추기 �
 ### Deployment Configuration
 
 ECS 서비스에서 [배포와 관련된 설정](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeploymentConfiguration.html )을 보면, `maximumPercent`와 `minimumHealthyPercent`가 있습니다.
-제게 비슷하면서도 헷갈리기 쉬운 2개의 설정값 개념은 손에 잡힐듯하면서도 쉽게 잡히지 않는 것 같습니다.😂
+비슷하면서도 헷갈리기 쉬운 2개의 설정값 개념은 손에 잡힐듯하면서도 쉽게 잡히지 않는 것 같아, 예시 상황을 적어보았습니다.😂
 
 *해당 개념이 조금 더 와닿을 수 있도록, 공식 문서를 읽어보시고 아래 상황이 어떨지 예상해 보세요!*
 
