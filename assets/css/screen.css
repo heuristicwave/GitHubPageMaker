@@ -604,6 +604,7 @@ The first (most recent) post in the list is styled to be bigger than the others 
     background: var(--lightgrey) center center;
     background-size: auto, auto;
     border-radius: 5px;
+    background-repeat: no-repeat;
 }
 
 @media (max-width: 1170px) {
