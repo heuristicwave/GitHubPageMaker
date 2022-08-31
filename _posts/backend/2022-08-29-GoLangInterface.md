@@ -5,9 +5,9 @@ cover:  assets/built/images/background/Go-Logo_Blue.png
 navigation: True
 title: GO Lang Interface
 date: 2022-08-29 00:00:00
-tags: [devops, container]
+tags: [backend, programming]
 class: post-template
-subclass: 'post tag-devops'
+subclass: 'post tag-backend'
 author: HeuristicWave
 ---
 
