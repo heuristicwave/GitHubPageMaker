@@ -1,6 +1,6 @@
 projects:
-  name: extracurricular
-  description: Extracurricular Activities
+  name: uncategorized
+  description: uncategorized
   cover: assets/built/images/ea.png
 devops:
   name: devops
