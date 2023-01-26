@@ -11,7 +11,7 @@ subclass: 'post tag-devops'
 author: HeuristicWave
 ---
 
-AWSKRUG 컨테이너 소모임🐳 - 1월 19일(목) 발표자료
+[AWSKRUG 컨테이너 소모임🐳 - 1월 19일(목)](https://www.meetup.com/awskrug/events/290666942/) 발표 자료
 
 ## Intro
 
