@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 #############################################################################
 #
 # Modified version of jekyllrb Rakefile
@@ -66,7 +64,7 @@ namespace :site do
     sh "bundle exec jekyll build"
 
     # Commit and push to github
-    sha = `git log`.match(/[a-z0-9]{40}/)[0]
+    sha = %x(git log).match(/[a-z0-9]{40}/)[0]
     Dir.chdir(CONFIG["destination"]) do
       # check if there is anything to add and commit, and pushes it
       sh "if [ -n '$(git status)' ]; then
