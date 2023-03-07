@@ -2,6 +2,7 @@
 #
 # Modified version of jekyllrb Rakefile
 # https://github.com/jekyll/jekyll/blob/master/Rakefile
+# encoding: utf-8
 #
 #############################################################################
 
