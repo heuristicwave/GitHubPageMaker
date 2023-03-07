@@ -11,6 +11,10 @@ phases:
   pre_build:
     commands:
       - echo Git Setting...
+      - mkdir -p ~/.ssh
+      - echo "$build_ssh_key" > ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
+      - ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
       - git config --global url."git@github.com:".insteadOf "https://github.com/"
       - git init
       - git remote add origin https://github.com/heuristicwave/GitHubPageMaker.git
@@ -19,7 +23,7 @@ phases:
   build:
     commands:
       - echo Building...
-      - bundle exec rake build
+      - bundle exec jekyll build
   post_build:
     commands:
       - echo Submodule Updating...
