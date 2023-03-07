@@ -17,17 +17,16 @@ phases:
 #      - ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
 #      - git config --global url."git@github.com:".insteadOf "https://github.com/"
       - git init
-      - git remote add origin https://$build_ssh_key@github.com/heuristicwave/GitHubPageMaker.git
+      - git remote add origin https://$GITHUB_TOKEN@github.com/heuristicwave/GitHubPageMaker.git
       - git fetch
-      - git pull origin master
-#      - git checkout -t origin/master
+      - git checkout -t origin/master
   build:
     commands:
       - echo Building...
-      - bundle exec jekyll build
+      - bundle exec rake site:deploy # --quiet
   post_build:
     commands:
       - echo Submodule Updating...
-      - git submodule init
-      - git submodule update --recursive
+#      - git submodule init
+#      - git submodule update --recursive
       - cat ./dist/index.html
