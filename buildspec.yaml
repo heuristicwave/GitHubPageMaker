@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      ruby: 2.7
+    commands:
+      - echo Installing dependencies...
+      - gem install bundler
+      - bundle install
+  pre_build:
+    commands:
+      - echo Git Setting...
+      - git remote add origin https://github.com/heuristicwave/GitHubPageMaker.git
+      - git fetch
+      - git checkout -t origin/master
+  build:
+    commands:
+      - echo Building...
+      - bundle exec rake build
+  post_build:
+    commands:
+      - echo Submodule Updating...
+      - git submodule init
+      - git submodule update --recursive
+      - cat ./dist/index.html
