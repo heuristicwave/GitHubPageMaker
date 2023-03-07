@@ -1,12 +1,5 @@
 version: 0.2
 
-env:
-  variables:
-    build_ssh_key: "LKZAYPjZxBnPaS2FbEqYW4ivI0EtksT7E2SIOvcCH7gn9X95E8gk00YeYrsfysoGdKyQtmoHuOc1xGPDHX/ozmEy2Tx5JbgdB3GrzFtqUp9gwb/2RCHb0e2Lk5DMbSzIRcPyP2e2pGaGcxAW2Cg1LebFrZ12u1URa7jTyRuOxvqDDeuQ
-                   fnfUuMgfRntjCYkPkgckHj6phHeVQXf4EYFyhygfWxy0BMFPXIxlgTe6TAibDs/TP0jZUMDdpVS9L+kOmv2aNTWdNy+g/D5TCmEEZjMY0fGrgIgxU6NjsPePvdt4zeomSKIWUW0eogCpwYEDFlJQPvGhRnMdv6+pFvxhGG+MPLFhaSGoM2wyuLdOiLA
-                   6kDNkYLm9vqMN/BEmYQVt0ZV57sQZlvM9SDnuH/XO3+FR044ESnDXXbrQq2uxT02ecKJkMgChZoel+lQaZ6r0BSlRjlIiNjTyLOi43gPNHJn/lzJ18C0jFewl7NSiPQ79oOzqPdLk0nVtkHBXDTPzDRYVkI1lyJuUJGF8yq48zhWkL8vabt4div09HB
-                   jwbrocsLQ2BrKG1ytNvxNMfFWB30MH/k8smbClB9BlnCIgpV5O9o+y/DtowSzBm7jo8luFsR+xm21b8sHlXUwWmEu1iSFOe7Cyy/zRHwRV3NeXMBRhxAdDRrg1F+Z5/OxS1Mc="
-
 phases:
   install:
     runtime-versions:
@@ -18,13 +11,13 @@ phases:
   pre_build:
     commands:
       - echo Git Setting...
-      - mkdir -p ~/.ssh
-      - echo "$build_ssh_key" > ~/.ssh/id_rsa
-      - chmod 600 ~/.ssh/id_rsa
-      - ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
-      - git config --global url."git@github.com:".insteadOf "https://github.com/"
+#      - mkdir -p ~/.ssh
+#      - echo "$build_ssh_key" > ~/.ssh/id_rsa
+#      - chmod 600 ~/.ssh/id_rsa
+#      - ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
+#      - git config --global url."git@github.com:".insteadOf "https://github.com/"
       - git init
-      - git remote add origin https://github.com/heuristicwave/GitHubPageMaker.git
+      - git remote add origin https://$build_ssh_key@github.com/heuristicwave/GitHubPageMaker.git
       - git fetch
       - git checkout -t origin/master
   build:
