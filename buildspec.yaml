@@ -11,6 +11,8 @@ phases:
   pre_build:
     commands:
       - echo Git Setting...
+      - git config --global url."git@github.com:".insteadOf "https://github.com/"
+      - git init
       - git remote add origin https://github.com/heuristicwave/GitHubPageMaker.git
       - git fetch
       - git checkout -t origin/master
