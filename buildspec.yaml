@@ -11,11 +11,12 @@ phases:
   pre_build:
     commands:
       - echo Git Setting...
-#      - mkdir buildZone && cd buildZone
+      - git status
+      - mkdir buildZone && cd buildZone
       - git init
       - git remote add origin https://$GITHUB_TOKEN@github.com/heuristicwave/GitHubPageMaker.git
       - git fetch
-      - git clean -d -f -f
+#      - git clean -d -f -f
 #      - git checkout -t origin/master
   build:
     commands:
