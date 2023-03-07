@@ -17,6 +17,7 @@ phases:
 #      - ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
 #      - git config --global url."git@github.com:".insteadOf "https://github.com/"
       - ls
+      - sleep 5
       - mkdir buildZone && cd buildZone
       - git init
       - git remote add origin https://$GITHUB_TOKEN@github.com/heuristicwave/GitHubPageMaker.git
@@ -25,10 +26,9 @@ phases:
   build:
     commands:
       - echo Building...
-      - bundle exec rake site:deploy # --quiet
+      - bundle exec rake site:deploy --trace # --quiet
   post_build:
     commands:
       - echo Submodule Updating...
 #      - git submodule init
 #      - git submodule update --recursive
-      - cat ./dist/index.html
