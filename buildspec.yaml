@@ -19,7 +19,8 @@ phases:
       - git init
       - git remote add origin https://$build_ssh_key@github.com/heuristicwave/GitHubPageMaker.git
       - git fetch
-      - git checkout -t origin/master
+      - git pull origin master
+#      - git checkout -t origin/master
   build:
     commands:
       - echo Building...
