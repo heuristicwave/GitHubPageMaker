@@ -7,7 +7,7 @@ phases:
     commands:
       - echo Installing dependencies...
       - gem install bundler
-      - bundle install
+      - bundle install --quiet
   pre_build:
     commands:
       - echo Git Setting...
@@ -16,6 +16,8 @@ phases:
 #      - chmod 600 ~/.ssh/id_rsa
 #      - ssh-keygen -F github.com || ssh-keyscan github.com >>~/.ssh/known_hosts
 #      - git config --global url."git@github.com:".insteadOf "https://github.com/"
+      - ls
+      - mkdir buildZone && cd buildZone
       - git init
       - git remote add origin https://$GITHUB_TOKEN@github.com/heuristicwave/GitHubPageMaker.git
       - git fetch
