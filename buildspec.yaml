@@ -16,7 +16,7 @@ phases:
       - git remote add origin https://$GITHUB_TOKEN@github.com/heuristicwave/GitHubPageMaker.git
       - git fetch
 #      - git clean -d -f -f
-#      - git checkout -t origin/master
+      - git checkout -t origin/master
   build:
     commands:
       - echo Building...
