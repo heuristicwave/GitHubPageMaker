@@ -4,7 +4,7 @@ current: post
 cover:  assets/built/images/background/k8s-horizontal.png
 navigation: True
 title: Using git submodule with AWS Code Pipeline
-date: 2023-03-07 00:00:00
+date: 2023-03-11 00:00:00
 tags: [devops, aws]
 class: post-template
 subclass: 'post tag-devops'

@@ -59,7 +59,7 @@ namespace :site do
 
     sh "git config --global user.name $GIT_NAME"
     sh "git config --global user.email $GIT_EMAIL"
-    sh "git config credential.helper store"
+    sh "git config --global credential.helper cache"
     sh "git config --global push.default simple"
 
     # Commit and push to github
