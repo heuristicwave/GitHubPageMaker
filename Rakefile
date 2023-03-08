@@ -65,6 +65,7 @@ namespace :site do
 
     sh "git config --global user.name $GIT_NAME"
     sh "git config --global user.email $GIT_EMAIL"
+    sh "git config credential.helper store"
     sh "git config --global push.default simple"
 
     # Commit and push to github
@@ -74,10 +75,7 @@ namespace :site do
       sh "if [ -n '$(git status)' ]; then
             git add --all .;
             git commit -m 'Updating to #{USERNAME}/#{REPO}@#{sha}.';
-            git status;
-            git remote -v;
-            git push origin #{DESTINATION_BRANCH} --quiet;
-            # git push https://$GITHUB_TOKEN@github.com/#{USERNAME}/#{USERNAME}.github.io.git #{DESTINATION_BRANCH} --quiet ;
+            git push https://$GITHUB_TOKEN@github.com/#{USERNAME}/#{USERNAME}.github.io.git #{DESTINATION_BRANCH} --quiet ;
          fi"
       puts "Pushed updated branch #{DESTINATION_BRANCH} to GitHub Pages"
     end
