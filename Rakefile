@@ -63,8 +63,8 @@ namespace :site do
     # Generate the site
     sh "bundle exec jekyll build"
 
-    # Debug
-    sh "git status"
+    sh "git config --global user.name $GIT_NAME"
+    sh "git config --global user.email $GIT_EMAIL"
 
     # Commit and push to github
     sha = `git log`.match(/[a-z0-9]{40}/)[0]
