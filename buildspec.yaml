@@ -10,6 +10,7 @@ phases:
       - bundle install --quiet
   pre_build:
     commands:
+      - export LC_ALL="en_US.utf8"
       - echo Git Setting...
       - mkdir buildZone && cd buildZone
       - git init
