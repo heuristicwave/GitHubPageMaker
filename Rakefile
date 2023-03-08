@@ -41,12 +41,6 @@ namespace :site do
 
   desc "Generate the site and push changes to remote origin"
   task :deploy do
-    # Detect pull request
-    if ENV['TRAVIS_PULL_REQUEST'].to_s.to_i > 0
-      puts 'Pull request detected. Not proceeding with deploy.'
-      exit
-    end
-
     # Configure git if this is run in Travis CI
     if ENV["TRAVIS"]
       sh "git config --global user.name $GIT_NAME"
