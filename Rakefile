@@ -74,6 +74,7 @@ namespace :site do
             git add --all .;
             git commit -m 'Updating to #{USERNAME}/#{REPO}@#{sha}.';
             git status;
+            git remote -v;
             git push https://$GITHUB_TOKEN@github.com/#{USERNAME}/#{USERNAME}.github.io.git #{DESTINATION_BRANCH} --quiet ;
          fi"
       puts "Pushed updated branch #{DESTINATION_BRANCH} to GitHub Pages"
