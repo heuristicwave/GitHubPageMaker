@@ -47,16 +47,12 @@ namespace :site do
       exit
     end
 
-    sh "git config --global user.name $GIT_NAME"
-    sh "git config --global user.email $GIT_EMAIL"
-    sh "git config --global push.default simple"
-
     # Configure git if this is run in Travis CI
-    #if ENV["TRAVIS"]
-    #  sh "git config --global user.name $GIT_NAME"
-    #  sh "git config --global user.email $GIT_EMAIL"
-    #  sh "git config --global push.default simple"
-    #end
+    if ENV["TRAVIS"]
+      sh "git config --global user.name $GIT_NAME"
+      sh "git config --global user.email $GIT_EMAIL"
+      sh "git config --global push.default simple"
+    end
 
     # Make sure destination folder exists as git repo
     check_destination
@@ -66,6 +62,9 @@ namespace :site do
 
     # Generate the site
     sh "bundle exec jekyll build"
+
+    # Token Check
+    sh "echo $GITHUB_TOKEN"
 
     # Commit and push to github
     sha = `git log`.match(/[a-z0-9]{40}/)[0]
