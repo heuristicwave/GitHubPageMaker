@@ -16,7 +16,7 @@ phases:
       - git init
       - git remote add origin https://$GITHUB_TOKEN@github.com/heuristicwave/GitHubPageMaker.git
       #      - git fetch
-      #      - git checkout -t origin/master
+      - git checkout -t origin/master
       #      - git submodule init
       #      - git submodule update --recursive
   build:
