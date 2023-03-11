@@ -56,6 +56,40 @@ Travis CI는 Source 연계(GitHub 연결)와 Build가 별도로 분리되어 있
 그러나 본 글에서는 직접 작성하여 **Source 레포지토리 루트 위치**에 `buildspec.yaml` 파일을 위치 시켜 진행하겠습니다.
 빌드 스펙은 [공식 문서](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html )를 참고하여 필요한 내용들을 정의합니다.
 
+<details><summary markdown="span">↪️ Git submodule 기능을 활용하기 위한 buildspec 예시</summary>
+<br>
+ruby 2.7, jekyll로 블로그를 git submodule로 운영하는 최소한의 설정입니다. <br>
+아래와 같은 commands를 기재한 이유는 troubleshooting 단계에서 설명합니다.
+
+```shell
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      ruby: 2.7
+    commands:
+      - echo Installing dependencies...
+      - gem install bundler
+      - bundle install --quiet
+  pre_build:
+    commands:
+      - export LC_ALL="en_US.utf8"
+      - echo Git Setting...
+      - mkdir buildZone && cd buildZone
+      - git init
+      - git remote add origin https://$GITHUB_TOKEN@github.com/heuristicwave/GitHubPageMaker.git
+      - git fetch
+      - git checkout -t origin/master
+      - git submodule init
+      - git submodule update --recursive
+  build:
+    commands:
+      - echo Building...
+      - bundle exec rake site:deploy
+```
+</details>
+
 ### 2️⃣ CodeBuild
 
 1. `Create build projects`를 누르고 **Project configuration**에서 프로젝트 이름을 정의합니다. 이름 이외의 설정은 비워두었습니다.
