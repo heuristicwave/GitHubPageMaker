@@ -3,7 +3,7 @@ layout: post
 current: post
 cover:  assets/built/images/background/githubio.png
 navigation: True
-title: Using git submodule with AWS Code Series (Build, Pipeline)
+title: Automating git submodules with AWS Code Series (Build, Pipeline)
 date: 2023-03-11 00:00:00
 tags: [devops, aws]
 class: post-template
@@ -11,7 +11,7 @@ subclass: 'post tag-devops'
 author: HeuristicWave
 ---
 
-AWS Code Series (Build, Pipeline)으로 git submodule 사용하기
+AWS Code Series (Build, Pipeline)으로 git submodule 자동화
 
 <br>
 
@@ -65,6 +65,7 @@ Travis CI는 Source 연계(GitHub 연결)와 Build가 별도로 분리되어 있
 5. 본 글에서는 Source 이벤트로 CodePipeline을 사용하므로, **Primary source webhook events**는 넘어갑니다.
 6. **Environment**에서는 다음과 같은 설정값을 주었습니다.
    ![codebuild](../../assets/built/images/post/aws/codebuild.png)
+   
    >❗️해당 단계에서 빌드하고 자 하는 런타임 환경을 꼭 [공식 문서](https://docs.aws.amazon.com/codebuild/latest/userguide/available-runtimes.html )에서 확인 후, 선택하세요.
    > <br>
    >❗빌드에 환경 변수를 명시했다면, **Additional configuration** 토글을 눌러 환경 변수를 추가해 주세요.
@@ -79,9 +80,8 @@ Travis CI는 Source 연계(GitHub 연결)와 Build가 별도로 분리되어 있
 2. Step 2 단계에서는 'Source provider'로 **GitHub (Version 2)**을 선택하고 'Connection'에서 깃헙과 연결해 줍니다. 
    이어서 상황에 맞게 'Repository name'과 'Branch name'을 선택하고 'Output artifact'로 default를 선택합니다.
    ![codepipeline](../../assets/built/images/post/aws/codepipeline.png)
+   
    default를 선택할 경우 고려 사항이 있지만, 자세한 내용은 아래 *Troubleshooting - Issue 1*단계에서 설명하겠습니다.
-   
-   
 3. Step 3 **Build** 단계에서는 앞서 생성한 Codebuild를 지정하고 다른 값들을 기본값으로 설정하고 다음 단계로 넘어갑니다.
 4. Step 4 **Deploy** 단계에서는 CodeDeploy와 같은 CD 도구 대신 Build의 command로 제어하므로 `Skip deploy stage` 버튼을 눌러 넘어갑니다.
 5. Step 5 **Deploy** 단계에서는 검토를 마치고 `Create pipeline` 버튼을 누르면 바로 정의한 파이프라인이 실행됩니다.
