@@ -76,6 +76,9 @@ EOF
 
 사용법(`terraform import [options] ADDRESS ID`)에 따라 아래 명령어를 실행시키면 **root directory**에 미리 생성된 인프라가 `*.tfstate` 파일에 담깁니다.
 
+> ⚠️ 본 예시는 SSM을 기준으로 작성되었습니다. SSM인 경우 아래와 같이 Association ID를 기재합니다.
+> 다른 리소스일 경우, 인스턴스 넘버, 파이프라인 이름 등과 같은 고유한 이름을 기재해야 합니다. 
+
 ```shell
 $ terraform import aws_ssm_association.copycat <Association ID>
 ```

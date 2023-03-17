@@ -48,7 +48,7 @@ Amazon EKS(이하 EKS)는 [약 3 ~ 5](https://docs.aws.amazon.com/eks/latest/use
 
 1. DNS의 **캐시를 최소화**하기 위해 **TTL은 1m**(60 seconds)를 권장
 2. 각 다른 환경에서 **50:50 가중치**를 주고 싶을 경우, **2개의 가중치 레코드에 Weighted 값 1**을 부여
-3. `Record ID`는 레코드의 **주석**과 같은 역할을 하지만 **필수**로 작성해야  (이어서 이 값의 중요성을~~ 😱) 
+3. `Record ID`는 레코드의 **주석**과 같은 역할을 하지만 **필수**로 작성해야 함 (이어서 이 값의 중요성을~~ 😱) 
 
 ## ExternalDNS
 
