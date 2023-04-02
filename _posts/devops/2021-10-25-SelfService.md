@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/self.png
+cover: assets/built/images/background/self.png
 navigation: True
 title: Self-service Infrastructure
 date: 2021-10-25 00:00:00

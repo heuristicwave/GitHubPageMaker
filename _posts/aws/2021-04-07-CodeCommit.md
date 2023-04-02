@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/post/CodePipeline.png
+cover: assets/built/images/post/CodePipeline.png
 navigation: True
 title: ECR CodePipeline with Terraform Ⅰ
 date: 2021-04-07 18:00:00

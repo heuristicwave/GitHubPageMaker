@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/githubio.png
+cover: assets/built/images/background/githubio.png
 navigation: True
 title: Automating git submodules with AWS Code Series (Build, Pipeline)
 date: 2023-03-11 00:00:00

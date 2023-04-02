@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/k8s-horizontal.png
+cover: assets/built/images/background/k8s-horizontal.png
 navigation: True
 title: Declarative vs Imperative in Kubernetes
 date: 2022-08-14 00:00:00

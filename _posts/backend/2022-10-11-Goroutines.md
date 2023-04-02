@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/Go-Logo_Blue.png
+cover: assets/built/images/background/Go-Logo_Blue.png
 navigation: True
 title: Goroutines
 date: 2022-10-16 00:00:00

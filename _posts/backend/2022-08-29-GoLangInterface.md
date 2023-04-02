@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/Go-Logo_Blue.png
+cover: assets/built/images/background/Go-Logo_Blue.png
 navigation: True
 title: GO Lang Interface
 date: 2022-08-29 00:00:00

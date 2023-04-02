@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/OpenAI.png
+cover: assets/built/images/background/OpenAI.png
 navigation: True
 title: Using OpenAI API with AWS Lambda
 date: 2023-02-02 20:00:00

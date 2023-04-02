@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/terraform.png
+cover: assets/built/images/background/terraform.png
 navigation: True
 title: Terraform Tips 4 - Move (Refactoring)
 date: 2022-06-07 00:00:00

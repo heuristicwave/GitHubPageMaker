@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/karpenter.png
+cover: assets/built/images/background/karpenter.png
 navigation: True
 title: My first impression of AWS Karpenter
 date: 2021-12-20 00:00:00

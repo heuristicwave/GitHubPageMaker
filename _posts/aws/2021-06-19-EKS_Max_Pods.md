@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/eks.png
+cover: assets/built/images/background/eks.png
 navigation: True
 title: Look into EKS max pods
 date: 2021-06-19 18:00:00

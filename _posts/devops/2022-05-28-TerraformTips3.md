@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/terraform.png
+cover: assets/built/images/background/terraform.png
 navigation: True
 title: Terraform Tips 3 - Refresh & Replace
 date: 2022-05-28 00:00:00

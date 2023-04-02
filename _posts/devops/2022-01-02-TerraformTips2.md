@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/terraform.png
+cover: assets/built/images/background/terraform.png
 navigation: True
 title: Terraform Tips 2 - Data & Index
 date: 2022-01-02 00:00:00

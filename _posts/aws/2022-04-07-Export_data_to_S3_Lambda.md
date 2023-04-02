@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/exportLambda.png
+cover: assets/built/images/background/exportLambda.png
 navigation: True
 title: Export cloudwatch log data to Amazon S3 using lambda
 date: 2022-04-07 00:00:00

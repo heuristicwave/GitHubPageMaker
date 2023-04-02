@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/external-dns.png
+cover: assets/built/images/background/external-dns.png
 navigation: True
 title: Amazon EKS Multi Cluster Upgrade with ExternalDNS
 date: 2023-02-25 00:00:00

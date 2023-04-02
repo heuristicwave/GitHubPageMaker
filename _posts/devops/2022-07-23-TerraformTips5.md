@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/terraform.png
+cover: assets/built/images/background/terraform.png
 navigation: True
 title: Terraform Tips 5 - Import
 date: 2022-07-23 00:00:00

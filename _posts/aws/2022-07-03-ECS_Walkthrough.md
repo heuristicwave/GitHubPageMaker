@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/ecs.png
+cover: assets/built/images/background/ecs.png
 navigation: True
 title: ECS on EC2 Walkthrough
 date: 2022-07-03 00:00:00

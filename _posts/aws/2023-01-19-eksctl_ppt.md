@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/eksctl.png
+cover: assets/built/images/background/eksctl.png
 navigation: True
 title: DIY Amazon EKS with eksctl
 date: 2023-01-19 19:00:00

@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/terraform.png
+cover: assets/built/images/background/terraform.png
 navigation: True
 title: Terraform Tips 1 - Module & Output
 date: 2022-01-01 00:00:00

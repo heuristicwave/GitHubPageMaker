@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/built/images/background/clock.png
+cover: assets/built/images/background/clock.png
 navigation: True
 title: EC2 Clocksource
 date: 2021-11-08 00:00:00
