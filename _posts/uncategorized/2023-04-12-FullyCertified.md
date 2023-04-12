@@ -97,7 +97,7 @@ AWS 채널과 달리, AWS Korea 채널의 영상에는 Timestamp가 제공되지
 12종의 자격증을 취득해나가며, 각 분야에서 도움을 준 고마운 분들이 많습니다. 고맙습니다 🙏
 
 12종 도전을 시작하도록 열정과 응원을 준, 일본의 Ambassador [Ueno](https://aws.amazon.com/jp/partners/ambassadors/?cards-body.sort-by=item.additionalFields.ambassadorName&cards-body.sort-order=asc&awsf.apn-ambassadors-location=*all&cards-body.q=Ueno&cards-body.q_operator=AND), [Kumagai](https://aws.amazon.com/jp/partners/ambassadors/?cards-body.sort-by=item.additionalFields.ambassadorName&cards-body.sort-order=asc&awsf.apn-ambassadors-location=*all&cards-body.q=Kumagai&cards-body.q_operator=AND) <br>
-지루한 여정 동안, 퇴근 이후까지 남으며 스터디메이트가 되어준 [nuatmochoi](https://medium.com/@nuatmochoi), [길팡](https://blog.naver.com/jogilsang), MLS 과외해준 [ksh](https://user-bin-ksh.medium.com/)
+지루한 여정 동안, 퇴근 이후까지 남으며 스터디메이트가 되어준 [nuatmochoi](https://medium.com/@nuatmochoi), [길팡](https://blog.naver.com/jogilsang), MLS 과외해준 [ksh](https://user-bin-ksh.medium.com/), 내 AWS 학습에 빠질 수 없는 [조력자 SSH](https://viassh.github.io/) 
 
 <br>
 
