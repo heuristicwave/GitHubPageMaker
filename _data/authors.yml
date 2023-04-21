@@ -3,7 +3,7 @@ HeuristicWave:          # Using in author.html
   name: Jihun Lim
   url_full:             # Homepage url
   url:
-  bio: <a href="https://feedly.com/i/subscription/feed/{{ site.url }}{{ site.baseurl }}author/{{ page.author }}/feed.xml">Follow my blog</a>
+  bio: <a href="https://feedly.com/i/subscription/feed/https://heuristicwave.github.io/feed.xml">Follow my blog</a>
   picture: assets/built/images/myGopher.png
   facebook:             # facebook ID
   twitter:              # twitter ID
