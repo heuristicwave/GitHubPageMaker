@@ -1,11 +1,10 @@
-HeuristicWave :
-  username: heuri    # user name : martin
-  name: Heuristic Wave        # user full name : Martin Luther King
+HeuristicWave:          # Using in author.html
+  username: HeuristicWave
+  name: Jihun Lim
   url_full:             # Homepage url
   url:
-  bio: <a href="https://github.com/heuristicwave/">My Github</a>
-  # 회사정보
-  picture: # assets/built/images/economy-author-logo.jpg   # author image
+  bio: <a href="https://feedly.com/i/subscription/feed/{{ site.url }}{{ site.baseurl }}author/{{ page.author }}/feed.xml">Follow my blog</a>
+  picture: assets/built/images/myGopher.png
   facebook:             # facebook ID
   twitter:              # twitter ID
   cover: False

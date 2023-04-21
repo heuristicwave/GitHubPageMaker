@@ -52,15 +52,6 @@ into the {body} of the default.hbs template -->
                 </div>
             </section>
 
-            <!-- Email subscribe form at the bottom of the page -->
-            {% if site.subscribers %}
-                <section class="subscribe-form">
-                    <h3 class="subscribe-form-title">Subscribe to {{ site.title }}</h3>
-                    <p>Get the latest posts delivered right via RSS</p>
-                    {% include subscribe-form.html placeholder="https://heuristicwave.github.io" %}
-                </section>
-            {% endif %}
-
             <footer class="post-full-footer">
                 <!-- Everything inside the #author tags pulls data from the author -->
                 <!-- #author-->
@@ -86,6 +77,15 @@ into the {body} of the default.hbs template -->
                 {% endfor %}
                 <!-- /author  -->
             </footer>
+
+            <!-- Email subscribe form at the bottom of the page
+            {% if site.subscribers %}
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to {{ site.title }}</h3>
+                    <p>Get the latest posts delivered right via RSS</p>
+                    {% include subscribe-form.html placeholder="https://heuristicwave.github.io" %}
+                </section>
+            {% endif %} -->
 
             <!-- If you use Disqus comments, just uncomment this block.
             The only thing you need to change is "test-apkdzgmqhj" - which
