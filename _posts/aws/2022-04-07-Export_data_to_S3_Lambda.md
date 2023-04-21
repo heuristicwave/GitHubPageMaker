@@ -123,8 +123,4 @@ await cloudwatchlogs.createExportTask(params).promise().then((data) => {
 
 소중한 시간을 내어 읽어주셔서 감사합니다! 잘못된 내용은 지적해 주세요! 😃
 
-<br>
-
 ---
-
-<br>

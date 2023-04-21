@@ -101,10 +101,6 @@ IaC에서는 항상 형상을 변경하기 전, 변경되는 리소스에 대한
 
 지금까지 테라폼 더 익숙하게 Refresh & Replace 편을 읽어주셔서 감사합니다! 잘못된 내용은 지적해 주세요! 😃
 
-<br>
-
 ---
 
 {% include terraform_tips.html %}
-
-<br>

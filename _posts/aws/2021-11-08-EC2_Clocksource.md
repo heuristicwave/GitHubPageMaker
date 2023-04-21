@@ -99,5 +99,3 @@ clocksource와는 별도로 이번 포스팅을 준비하다 거의 주말 하�
 - [Reinventing virtualization with the AWS Nitro System](https://www.allthingsdistributed.com/2020/09/reinventing-virtualization-with-nitro.html)
 
 ---
-
-<br>

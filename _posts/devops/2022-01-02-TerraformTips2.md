@@ -169,10 +169,6 @@ resource "aws_lb_target_group" "sample_resource" {
 
 지금까지 테라폼 더 익숙하게 Data & Index 편을 읽어주셔서 감사합니다! 잘못된 내용은 지적해 주세요! 😃
 
-<br>
-
 ---
 
 {% include terraform_tips.html %}
-
-<br>

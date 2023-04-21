@@ -160,5 +160,3 @@ git clone $tf_source_repo_clone_url_http
 ---
 
 {% include terraform.html %}
-
-<br>

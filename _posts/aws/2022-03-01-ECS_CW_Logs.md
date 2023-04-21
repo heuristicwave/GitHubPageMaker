@@ -104,10 +104,6 @@ INFO | (pkg/trace/info/stats.go:104 in LogStats)                # Line 2
 아마도 위에 기재한 것들 외에도 더 고려 할 것들이 많을 것 같습니다.
 개발이나 알고리즘 문제를 풀 때와 마찬가지로 항상 예상치 못한 실패 지점을 예상하는 습관이 필요한 것 같습니다.
 
-<br>
-
 ---
 
 {% include ecs_troubleshooting.html %}
-
-<br>

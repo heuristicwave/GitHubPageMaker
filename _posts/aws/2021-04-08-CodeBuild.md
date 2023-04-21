@@ -170,12 +170,6 @@ aws_s3_bucket.artifact_bucket
 
 </details>
 
-
-<br>
-
-
 ---
 
 {% include terraform.html %}
-
-<br>

@@ -125,10 +125,6 @@ resource "aws_efs_mount_target" "mount" {
 
 지금까지 테라폼 더 익숙하게 Module & Output 편을 읽어주셔서 감사합니다! 잘못된 내용은 지적해 주세요! 😃
 
-<br>
-
 ---
 
 {% include terraform_tips.html %}
-
-<br>

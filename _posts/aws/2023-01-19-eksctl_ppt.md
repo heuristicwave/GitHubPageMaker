@@ -31,5 +31,3 @@ AWSKRUG에서는 첫 발표였는데, 부족한 발표임에도 19일 당일 소
 ---
 
 {% include eksctl_tips.html %}
-
-<br>

@@ -138,5 +138,3 @@ Karpenter의 빠른 프로비저닝과 유연한 스케일링 덕분에 클라�
 - [Karpenter Document](https://karpenter.sh/)
 
 ---
-
-<br>
