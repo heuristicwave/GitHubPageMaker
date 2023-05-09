@@ -115,9 +115,8 @@ resource "aws_iam_role_policy_attachment" "codebuild-attach" {
 CodeBuild가 정의된 아래 코드를 활용해 `codebuild.tf`에 추가합니다.
 {% gist heuristicwave/2ebf79ce3cbdf4a87657b272f9e1d994 %}
 
-31라인이 참조하는 `buildspec.yml`을 pre_build, build, post_build에 맞춰 작성합니다.
+31라인이 참조하는 `buildspec.yml`을 생성하고, pre_build, build, post_build에 맞춰 작성합니다.
 ```yaml
-cat <<EOF > buildspec.yml
 version: 0.2
 
 phases:
@@ -146,7 +145,6 @@ phases:
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
-EOF
 ```
 
 지금까지 작성된 인프라를 `terraform state list`명령어를 통해 확인하면 아래와 같습니다.
