@@ -21,8 +21,9 @@ Terraform으로 ECR 파이프라인 구축하기 3 (CodePipeline)
 테라폼은 선언형 언어이므로 Role과 Resource의 작성 순서가 바뀌어도 상관이 없지만, 콘솔에서 작업할 경우 Role을 먼저 작성하고 리소스를 생성하니 3편에서는 IAM을 먼저 작성하겠습니다.
 
 ### IAM Role
-아래 Role을 방금전 생성한 `codepipeline.tf`에 작성합니다.
+아래 Role을 `codepipeline.tf`에 작성합니다.
 ```shell
+cat <<EOF > codepipeline.tf
 resource "aws_iam_role" "codepipeline_role" {
   name = "terraform-codepipeline"
   assume_role_policy = <<EOF
@@ -40,6 +41,7 @@ resource "aws_iam_role" "codepipeline_role" {
 }
 EOF
 }
+EOF
 ```
 
 ### IAM Policy
@@ -85,7 +87,7 @@ resource "aws_iam_policy" "codepipeline_policy" {
 EOF
 }
 ```
-🚩 이어서 생성한 **Policy를 Role에 부여**합니다. 이것 역시 `codebuild.tf`에 추가합니다.
+🚩 이어서 생성한 **Policy를 Role에 부여**합니다. 이것 역시 `codepipeline.tf`에 추가합니다.
 ```shell
 resource "aws_iam_role_policy_attachment" "codepipeline-attach" {
   role       = aws_iam_role.codepipeline_role.name
