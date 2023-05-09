@@ -77,7 +77,7 @@ EOF
 cat <<EOF > terraform.tfvars
 aws_ecr="my-image"
 source_repo_name="my-pipeline"
-source_repo_branch="master"
+source_repo_branch="main"
 image_repo_name="my-pipeline"
 EOF
 ```
@@ -136,7 +136,7 @@ EOF
 git add Dockerfile
 git commit -m "Create Dockerfile"
 git status
-git push origin # master branch로 push
+git push origin # main branch로 push
 ```
 
 자격 증명 문제가 있다면 아래 명령어로 해결합니다. [자격 증명 헬퍼 및 AWS CodeCommit에 대한 HTTPS 연결 문제 해결](https://docs.aws.amazon.com/ko_kr/codecommit/latest/userguide/troubleshooting-ch.html)
