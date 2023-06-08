@@ -10,7 +10,7 @@ class: post-template
 subclass: 'post tag-aws'
 author: HeuristicWave
 ---
-본 글은 작년 12월에 릴리즈 된 **HardenEKS**를 사용해 보며, 설치 및 커스텀 방법에 대하여 작성 글입니다.
+본 글은 작년 12월 AWS Samples 깃허브에 릴리즈 된 **HardenEKS**를 사용해 보며, 설치 및 커스텀 방법에 대하여 작성 글입니다.
 
 # Intro
 
