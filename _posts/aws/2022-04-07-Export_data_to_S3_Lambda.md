@@ -14,7 +14,7 @@ author: HeuristicWave
 
 # Intro
 
-글을 시작하기 앞서, [Shraddha Paghdar - Export AWS CloudWatch logs to S3 using lambda functions in Node.js](https://noob2geek.in/2021/06/18/export-aws-cloudwatch-logs-to-s3-using-lambda-functions-in-node-js/)
+글을 시작하기 앞서, [Shraddha Paghdar - Export AWS CloudWatch logs to S3 using lambda functions in Node.js](https://aws.plainenglish.io/export-aws-cloudwatch-logs-to-s3-using-lambda-functions-in-node-js-b97e2afa0ac)
 를 참고하여 해당 글을 작성했음을 알립니다. 본격적으로 방법을 소개하기 앞서, Cloudwatch Logs groups의 데이터를 Lambda를 사용해 주기적으로 S3로 export 하기 위한 플로우는 다음과 같습니다.
 
 ![imageBuilder](../../assets/built/images/background/exportLambda.png)
