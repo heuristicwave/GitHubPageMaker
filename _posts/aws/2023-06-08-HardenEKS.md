@@ -122,7 +122,7 @@ cat /tmp/.venv/lib/python3.9/site-packages/hardeneks/config.yaml > my-config.yam
 6. 리포트를 생성하는 명령어에서 수정된 config 파일을 옵션으로 적용시키면, 커스텀 하게 바꾼 값들이 적용 <br>
    *예) `hardeneks --config <my-config>.yaml --export-html <Report Name>.html`*
 
-Report 상단에는 어떤 대상으로 스캔을 진행했는지, 요약 정보가 나옵니다. 검사 결과와 더불어, Resolution을 통해 EBPG의 Link도 함께 안내됩니다.
+Report 상단에는 무엇을 대상으로 스캔을 진행했는지, **요약 정보**가 나옵니다. 검사 결과와 더불어, **Resolution**을 통해 **EBPG의 Link**도 함께 안내됩니다.
 
 아래 사진은 Example에서 적용시킨 custom.yaml 적용 여부와, rule을 삭제한 결과 화면입니다. 
 
