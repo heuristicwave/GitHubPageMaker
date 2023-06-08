@@ -114,7 +114,6 @@ cat /tmp/.venv/lib/python3.9/site-packages/hardeneks/config.yaml > my-config.yam
 2. [namespace_based 페이지](https://aws-samples.github.io/hardeneks/namespace_based/index.html),  Sub-modules에서 `reliability` 선택
 3. [reliability 페이지](https://aws-samples.github.io/hardeneks/namespace_based/reliability/index.html), Sub-modules에서 `applications` 선택
 4. 여기까지 진행하면 Functions이 나오는데, 찾고자 하는 **rule**을 `Ctrl + F`로 함수 명 검색
-
 ![hardeneks-rule](../../assets/built/images/post/aws/rule.png)
 
 5. `schedule_replicas_across_nodes` 함수 명이 `Spread replicas across AZs and Nodes` 해당하는 **rule** 이름이므로,
