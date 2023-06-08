@@ -10,7 +10,7 @@ class: post-template
 subclass: 'post tag-aws'
 author: HeuristicWave
 ---
-본 글은 작년 12월 AWS Samples 깃허브에 릴리즈 된 **HardenEKS**를 사용해 보며, 설치 및 커스텀 방법에 대하여 작성 글입니다.
+본 글은 작년 12월 AWS Samples 깃허브에 릴리즈 된 **[HardenEKS](https://github.com/aws-samples/hardeneks)**를 사용해 보며, 설치 및 커스텀 방법에 대하여 작성 글입니다.
 
 # Intro
 
@@ -22,7 +22,9 @@ HardenEKS는 [EKS Best Practices Guides (이하 EBPG)](https://aws.github.io/aws
 
 ## HardenEKS
 
-[HardenEKS](https://github.com/aws-samples/hardeneks) 깃허브에는 *'EKS 클러스터가 EKS 모범 사례를 따르고 있는지 검사'* 한다고 소개되어 있습니다.
+깃허브에는 *'EKS 클러스터가 EKS 모범 사례를 따르고 있는지 검사'* 한다고 소개되어 있습니다.
+**명령어 한줄로 EKS Best Practice 준수 여부에 대해 검사하고 txt, html, json 등의 형식으로 보고서를 제공**합니다.
+
 EBPG에는 글을 작성하는 시점을 기준으로 Security, Reliability, Cluster Autoscaling, Running Windows Containers, Networking, Scalability, Cluster Upgrades에 대하여 가이드하고 있습니다.
 
 HardenEKS kubernetes API를 호출하여 스캔을 진행하며, 다음 범주에 대하여 검사가 가능합니다. 
