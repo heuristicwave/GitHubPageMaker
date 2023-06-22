@@ -4,7 +4,7 @@ current: post
 cover: assets/built/images/background/githubio.png
 navigation: True
 title: Automating git submodules with AWS Code Series (Build, Pipeline)
-date: 2023-03-11 00:00:00
+date: 2023-03-31 00:00:00
 tags: [devops, aws]
 class: post-template
 subclass: 'post tag-devops'
