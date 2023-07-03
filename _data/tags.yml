@@ -2,9 +2,9 @@ projects:
   name: uncategorized
   description: uncategorized
   cover: assets/built/images/ea.png
-devops:
-  name: devops
-  description: TIL - DevOps
+ai:
+  name: Artificial Intelligence
+  description: AI/ML/DL
   cover: False
 aws:
   name: aws
@@ -14,3 +14,7 @@ backend:
   name: backend
   description: TIL - Back-end
   cover: assets/built/images/backend.png
+devops:
+  name: devops
+  description: TIL - DevOps
+  cover: False
