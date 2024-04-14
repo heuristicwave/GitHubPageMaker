@@ -4,7 +4,7 @@ current: post
 navigation: True
 title: LLM Evaluation에 대해 끄적이기
 date: 2024-03-31 00:00:00
-tags: [llm, genai]
+tags: [ai, genai, llm]
 class: post-template
 subclass: "post tag-ai"
 author: HeuristicWave
