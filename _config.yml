@@ -2,7 +2,6 @@
 markdown: kramdown
 kramdown:
   parse_block_html: true
-# kramdown : markdown에서 불편한 사항을 개선한 형태.
 encoding: 'UTF-8'
 
 # MyData
@@ -24,8 +23,6 @@ owner:
   google_plus:
 
 highlighter: rouge
-# 2016.02월 이후로 syntax highlighter는 rouge만 지원.
-# Pygments 사용불가.
 
 paginate: 20
 
@@ -36,7 +33,7 @@ url: https://heuristicwave.github.io
 # 정상적으로 생성되지 않는다.
 # 또한 disqus(댓글시스템)를 이용하기 위해서도 필요.
 
-baseurl: /
+baseurl: "/"
 
 # Website info
 title: Heuristic Wave Blog
@@ -53,7 +50,6 @@ favicon: assets/built/images/water-wave-48.png
 production_url: https://heuristicwave.github.io
 
 source_url: https://github.com/heuristicwave/GitHubPageMaker
-# blogmaker(jekyll source folder)에 대한 github repository
 
 # Social info
 navigation: True
@@ -118,3 +114,4 @@ exclude:
   - assets/css
   - assets/images
   - _posts/et-cetera
+  - buildspec.yaml
