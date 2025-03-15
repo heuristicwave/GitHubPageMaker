@@ -71,7 +71,7 @@ AWS의 공식 서비스는 아니지만, AWS의 Application Load Balancer와 Lam
 
 ### 아키텍처
 
-![아키텍처](https://raw.githubusercontent.com/aws-samples/bedrock-access-gateway/refs/heads/main/assets/arch.svg)
+![아키텍처](https://github.com/aws-samples/bedrock-access-gateway/raw/main/assets/arch.png)
 
 Bedrock Access Gateway는 API Key 생성을 위한 Parameter Store, 스트리밍 응답과 API URL을 제공하는 Application Load Balancer(ALB), 그리고 Bedrock API를 OpenAI 형식으로 변환해주는 Proxy 서버 역할의 Lambda로 구성되어 있습니다.
 
@@ -91,13 +91,8 @@ Bedrock Access Gateway는 API Key 생성을 위한 Parameter Store, 스트리밍
 
 Parameter Store를 사용하는 방법과 컨테이너에 직접 환경 변수를 설정하는 2가지 방법이 있지만, 이번 포스팅에서는 Parameter Store를 사용하겠습니다.
 
-1. AWS Systems Manager > Parameter Store 접속 > 'Create parameter' 클릭
-2. 파라미터 설정
-   - 이름: `BedrockProxyAPIKey`
-   - 계층: 표준
-   - 유형: 문자열
-   - 데이터 형식: text
-   - 값: 원하는 API 키 값
+1. AWS Secrets Manager > `Store a new secret` 버튼 클릭
+2. 'Other type of secret'을 누르고 차례대로 **Secrets** 생성
 
 #### 2. CloudFormation 스택 배포
 
@@ -107,8 +102,7 @@ AWS 콘솔에서 원하는 리전과 CloudFormation 템플릿을 선택합니다
    - ALB + Lambda
    - ALB + Fargate
 2. 스택 세부정보 입력
-   - 1단계에서 API 키를 설정한 경우, API 키를 저장하는데 사용한 파라미터 이름을 입력 (예: `BedrockProxyAPIKey`)
-   - API 키를 설정하지 않은 경우, 해당 필드를 비우고 "다음" 단계로 넘어가세요
+   - 1단계에서 API 키를 설정한 경우, API 키를 저장하는데 사용한 Secret ARN을 입력 (예: `arn:aws:secretsmanager` 으로 시작함.)
 3. IAM 리소스 생성 권한 확인
    - CloudFormation이 필요한 IAM 리소스를 자동으로 생성할 수 있도록, 3단계 하단의 권한 부여 체크박스를 선택합니다.
 4. 스택 생성 약 10분 내외 소요
