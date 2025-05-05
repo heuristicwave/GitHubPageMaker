@@ -21,9 +21,7 @@ author: HeuristicWave
 
 모델 증류는 대규모 교사 모델(Teacher Model)의 지식을 더 작은 학생 모델(Student Model)로 전달하는 기술로, 모델 크기와 연산 비용을 줄이면서도 성능을 최대한 유지할 수 있습니다.
 Amazon Bedrock Model Distillation은 두 가지 주요 단계로 구성됩니다. 첫째, 훈련에 필요한 학습 데이터를 생성하는 과정과 둘째, 이렇게 만들어진 학습 데이터를 활용하여 교사 모델을 미세 조정함으로써 증류 모델을 생성하는 과정입니다.
-
-![Model Distillation](../../assets/built/images/post/ai/Bedrock/ModelDistillation.png)
-
+![Model Distillation](../../assets/built/images/post/ai/Bedrock/modelDistillation.png)
 Bedrock은 현재 이미지 작업에 대한 모델 증류를 공식적으로 지원하지 않습니다. 그러나 증류 과정의 기본 원리를 이해하고 있다면, 교사 모델을 활용해 직접 훈련용 데이터를 생성하고 별도로 미세 조정을 수행함으로써 이미지 작업에 대한 모델 증류를 자체적으로 구현할 수 있습니다.
 
 <br>
