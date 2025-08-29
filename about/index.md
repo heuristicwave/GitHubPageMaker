@@ -8,5 +8,4 @@ class: page-template
 subclass: 'post page'
 ---
 
-Test!
-before ci
+Test! GitHub X Code Pipeline
