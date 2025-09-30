@@ -1,3 +1,317 @@
+---
+# Custom CSS with theme support
+---
+
+/* CSS Custom Properties System - 커스텀 프로퍼티 시스템
+/* ---------------------------------------------------------- */
+
+:root {
+    /* Color Palette - Light Theme */
+    --color-primary: #3eb0ef;
+    --color-secondary: #15171a;
+    --color-success: #a4d037;
+    --color-warning: #fecd35;
+    --color-error: #f05230;
+    --color-info: #ad26b4;
+    
+    /* Neutral Colors - Light Theme */
+    --color-white: #ffffff;
+    --color-light: #f4f8fb;
+    --color-medium: #738a94;
+    --color-dark: #15171a;
+    
+    /* Semantic Background Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f8fb;
+    --bg-tertiary: #e5eff5;
+    --bg-accent: var(--color-primary);
+    
+    /* Semantic Text Colors */
+    --text-primary: #15171a;
+    --text-secondary: #738a94;
+    --text-tertiary: #c5d2d9;
+    --text-inverse: #ffffff;
+    --text-accent: var(--color-primary);
+    
+    /* Border Colors */
+    --border-primary: #e5eff5;
+    --border-secondary: #c5d2d9;
+    --border-accent: var(--color-primary);
+    
+    /* Shadow Colors */
+    --shadow-light: rgba(39, 44, 49, 0.06);
+    --shadow-medium: rgba(39, 44, 49, 0.08);
+    --shadow-heavy: rgba(39, 44, 49, 0.12);
+    --shadow-accent: rgba(62, 176, 239, 0.15);
+    
+    /* Spacing System */
+    --spacing-xs: 0.5rem;   /* 8px */
+    --spacing-sm: 1rem;     /* 16px */
+    --spacing-md: 1.5rem;   /* 24px */
+    --spacing-lg: 2rem;     /* 32px */
+    --spacing-xl: 2.5rem;   /* 40px */
+    --spacing-xxl: 3rem;    /* 48px */
+    --spacing-xxxl: 4rem;   /* 64px */
+    
+    /* Typography Scale */
+    --font-size-xs: 1.2rem;
+    --font-size-sm: 1.4rem;
+    --font-size-base: 1.6rem;
+    --font-size-lg: 1.8rem;
+    --font-size-xl: 2.2rem;
+    --font-size-xxl: 2.6rem;
+    --font-size-xxxl: 3.2rem;
+    --font-size-display: 4.6rem;
+    
+    /* Line Heights */
+    --line-height-tight: 1.2;
+    --line-height-base: 1.6;
+    --line-height-loose: 1.8;
+    
+    /* Font Weights */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 50%;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --transition-bounce: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Dark Theme Variables - 기존 네비게이션 바와 일치하는 스타일 */
+[data-theme="dark"] {
+    /* Semantic Background Colors - Dark (네비게이션 바와 일치) */
+    --bg-primary: #15171a;  /* 기존 --darkgrey와 동일 */
+    --bg-secondary: #1f2124; /* 약간 밝은 어두운 색 */
+    --bg-tertiary: #2a2d32;  /* 카드 배경용 */
+    
+    /* Semantic Text Colors - Dark */
+    --text-primary: #ffffff;
+    --text-secondary: #c5d2d9; /* 기존 --lightgrey와 유사 */
+    --text-tertiary: #738a94;  /* 기존 --midgrey와 동일 */
+    --text-inverse: #15171a;
+    
+    /* Border Colors - Dark */
+    --border-primary: #2a2d32;
+    --border-secondary: #3a3d42;
+    
+    /* Shadow Colors - Dark (더 강한 그림자로 깊이감 증가) */
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.4);
+    --shadow-heavy: rgba(0, 0, 0, 0.6);
+    --shadow-accent: rgba(62, 176, 239, 0.3);
+    
+    /* Adjust light/medium colors for dark theme */
+    --color-light: #1f2124;
+    --color-medium: #c5d2d9;
+}
+
+/* Prefers-color-scheme support for automatic dark mode */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        /* Apply dark theme variables when system prefers dark and no explicit light theme is set */
+        --bg-primary: #15171a;
+        --bg-secondary: #1f2124;
+        --bg-tertiary: #2a2d32;
+        --text-primary: #ffffff;
+        --text-secondary: #c5d2d9;
+        --text-tertiary: #738a94;
+        --text-inverse: #15171a;
+        --border-primary: #2a2d32;
+        --border-secondary: #3a3d42;
+        --shadow-light: rgba(0, 0, 0, 0.3);
+        --shadow-medium: rgba(0, 0, 0, 0.4);
+        --shadow-heavy: rgba(0, 0, 0, 0.6);
+        --shadow-accent: rgba(62, 176, 239, 0.3);
+        --color-light: #1f2124;
+        --color-medium: #c5d2d9;
+    }
+}
+
+/* Dark Theme Body Background */
+[data-theme="dark"] body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Dark Theme Post Cards */
+[data-theme="dark"] .post-card {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    box-shadow: 
+        0 2px 8px var(--shadow-medium),
+        0 1px 3px var(--shadow-light);
+}
+
+[data-theme="dark"] .post-card:hover {
+    box-shadow: 
+        0 8px 25px var(--shadow-heavy),
+        0 3px 10px var(--shadow-medium);
+    border-color: var(--border-accent);
+}
+
+/* Dark Theme Post Content */
+[data-theme="dark"] .post-card-content-link {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .post-card-content-link:hover {
+    color: var(--text-accent);
+}
+
+[data-theme="dark"] .post-card-excerpt {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .post-card-meta {
+    color: var(--text-tertiary);
+}
+
+/* Dark Theme Site Main */
+[data-theme="dark"] .site-main {
+    background: var(--bg-primary);
+}
+
+/* Dark Theme Post Full Content */
+[data-theme="dark"] .post-template .site-main,
+[data-theme="dark"] .page-template .site-main {
+    background: var(--bg-primary);
+}
+
+[data-theme="dark"] .post-full-content {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-left: var(--spacing-sm);
+    padding: 0;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-md);
+    color: #fff;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    opacity: 0.8;
+}
+
+.theme-toggle:hover {
+    opacity: 1;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    opacity: 1;
+}
+
+.theme-icon {
+    width: 20px;
+    height: 20px;
+    transition: all var(--transition-fast);
+}
+
+.theme-icon--light {
+    display: none;
+}
+
+.theme-icon--dark {
+    display: block;
+}
+
+/* Dark theme adjustments for toggle button */
+[data-theme="dark"] .theme-toggle {
+    border-color: var(--border-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    border-color: var(--border-secondary);
+    background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .theme-icon--light {
+    display: block;
+}
+
+[data-theme="dark"] .theme-icon--dark {
+    display: none;
+}
+
+/* Mobile adjustments for theme toggle */
+@media (max-width: 700px) {
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+        margin-left: var(--spacing-xs);
+    }
+    
+    .theme-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Ensure theme toggle is visible in navigation */
+.site-nav-right .theme-toggle {
+    flex-shrink: 0;
+}
+
+/* Focus States for Accessibility */
+[data-theme="dark"] .post-card:focus-within {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    box-shadow: 
+        0 8px 25px var(--shadow-heavy),
+        0 3px 10px var(--shadow-medium),
+        0 0 0 3px var(--shadow-accent);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .post-card,
+    .theme-toggle,
+    .post-card-content-link {
+        transition: none;
+    }
+    
+    .post-card:hover {
+        transform: none;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    [data-theme="dark"] .post-card {
+        border-width: 2px;
+        border-color: var(--text-primary);
+    }
+    
+    [data-theme="dark"] .post-card:hover {
+        border-color: var(--color-primary);
+    }
+}
+
 /* Search 결과화면을 위한 CSS 설정 시작 */
 ul.mylist li, ol.mylist li {
     padding: 5px 0px 5px 5px;
@@ -23,6 +337,18 @@ ol.mylist li {
 ul.mylist li:hover,
 ol.mylist li:hover {
     background-color: #f6f0b6;
+}
+
+/* Dark theme support for search results */
+[data-theme="dark"] ul.mylist li,
+[data-theme="dark"] ol.mylist li {
+    border-bottom-color: var(--border-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] ul.mylist li:hover,
+[data-theme="dark"] ol.mylist li:hover {
+    background-color: var(--bg-tertiary);
 }
 /* Search 결과화면을 위한 CSS 설정 끝 */
 
@@ -71,6 +397,16 @@ ul.table-of-contents-list li a, ol.table-of-contents-list li a {
     text-decoration: none;
     color: color(var(--midgrey) l(-25%));
     font-weight: bold;
+}
+
+/* Dark theme support for table of contents */
+[data-theme="dark"] span.table-of-contents-list {
+    color: var(--color-primary);
+}
+
+[data-theme="dark"] ul.table-of-contents-list li a,
+[data-theme="dark"] ol.table-of-contents-list li a {
+    color: var(--text-secondary);
 }
 
 ul.table-of-contents-list li a:hover, ol.table-of-contents-list li a:hover {
