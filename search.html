@@ -1,19 +1,37 @@
 ---
 layout: page
 current: search
-title: Search Result
+title: 작성된 글 검색
 navigation: true
 logo:
 class: page-template
 subclass: 'post page'
 ---
 
-<form action="/search" method="get" hidden="hidden">
-    <label for="search-box"></label>
-    <input type="text" id="search-box" name="query">
-</form>
-
-<ul class="mylist" id="search-results"></ul>
+<div class="search-container">
+    <div class="search-header">
+        <h3 class="search-title">원하는 글을 찾아보세요</h3>
+    </div>
+    
+    <div class="search-form-wrapper">
+        <form action="/search" method="get" class="search-form">
+            <div class="search-input-wrapper">
+                <input type="text" id="search-box" name="query" placeholder="검색어를 입력하세요..." class="search-input">
+                <button type="submit" class="search-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="search-status" id="search-status"></div>
+    <div class="search-results-wrapper">
+        <ul class="search-results" id="search-results"></ul>
+    </div>
+</div>
 
 <script>
     window.store = {
