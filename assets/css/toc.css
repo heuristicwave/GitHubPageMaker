@@ -1,0 +1,497 @@
+---
+---
+
+/* TOC Floating Button Styles */
+.toc-floating-btn {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 2px solid #e5eff5;
+    border-radius: 50%;
+    color: #3eb0ef;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toc-floating-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(62, 176, 239, 0.3);
+    border-color: #3eb0ef;
+}
+
+.toc-floating-btn.active {
+    background: #3eb0ef;
+    color: #fff;
+    border-color: #3eb0ef;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(62, 176, 239, 0.4);
+}
+
+/* TOC Sidebar Styles */
+.toc-sidebar {
+    position: fixed;
+    top: 0;
+    left: -350px;
+    width: 320px;
+    height: 100vh;
+    background: #fff;
+    border-right: 1px solid #e5eff5;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 9998;
+    font-size: 14px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toc-sidebar.show {
+    left: 0;
+}
+
+/* 사이드바가 열렸을 때 body 오버레이 */
+body.toc-sidebar-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 9997;
+    opacity: 0;
+    animation: fadeInOverlay 0.4s ease forwards;
+}
+
+@keyframes fadeInOverlay {
+    to {
+        opacity: 1;
+    }
+}
+
+.toc-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 1px solid #e5eff5;
+}
+
+.toc-sidebar-header h4 {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #15171A;
+}
+
+.toc-count {
+    font-size: 12px;
+    color: #738a94;
+    font-weight: 500;
+    margin-right: auto;
+    margin-left: 8px;
+}
+
+.toc-close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #738a94;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.toc-close-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #15171A;
+}
+
+.toc-sidebar-nav {
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    padding: 16px 0;
+}
+
+.toc-sidebar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toc-item {
+    margin: 0;
+    padding: 0;
+}
+
+.toc-link {
+    display: block;
+    padding: 12px 20px;
+    color: #738a94;
+    text-decoration: none;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+    font-size: 14px;
+    position: relative;
+}
+
+.toc-link:hover {
+    color: #15171A;
+    background-color: #f8f9fa;
+    text-decoration: none;
+    transform: translateX(4px);
+    border-left-color: #dee2e6;
+}
+
+.toc-link.active {
+    color: #3eb0ef;
+    background-color: rgba(62, 176, 239, 0.1);
+    border-left-color: #3eb0ef;
+    font-weight: 600;
+    transform: translateX(4px);
+}
+
+.toc-link.active::before {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: #3eb0ef;
+    border-radius: 50%;
+}
+
+/* 레벨별 들여쓰기 */
+.toc-level-1 .toc-link {
+    padding-left: 20px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.toc-level-2 .toc-link {
+    padding-left: 36px;
+    font-size: 14px;
+}
+
+.toc-level-3 .toc-link {
+    padding-left: 52px;
+    font-size: 13px;
+}
+
+.toc-level-4 .toc-link {
+    padding-left: 68px;
+    font-size: 12px;
+}
+
+.toc-level-5 .toc-link {
+    padding-left: 84px;
+    font-size: 11px;
+}
+
+.toc-level-6 .toc-link {
+    padding-left: 100px;
+    font-size: 11px;
+}
+
+/* 스크롤바 스타일링 */
+.toc-sidebar-nav::-webkit-scrollbar {
+    width: 8px;
+}
+
+.toc-sidebar-nav::-webkit-scrollbar-track {
+    background: #f8f9fa;
+}
+
+.toc-sidebar-nav::-webkit-scrollbar-thumb {
+    background: #dee2e6;
+    border-radius: 4px;
+}
+
+.toc-sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: #adb5bd;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .toc-floating-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+        top: 70px;
+        left: 15px;
+    }
+    
+    .toc-sidebar {
+        width: 280px;
+        left: -300px;
+    }
+    
+    .toc-sidebar-header {
+        padding: 16px;
+    }
+    
+    .toc-sidebar-header h4 {
+        font-size: 16px;
+    }
+    
+    .toc-count {
+        font-size: 11px;
+    }
+    
+    .toc-link {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+    
+    .toc-level-1 .toc-link {
+        padding-left: 16px;
+        font-size: 14px;
+    }
+    
+    .toc-level-2 .toc-link {
+        padding-left: 28px;
+    }
+    
+    .toc-level-3 .toc-link {
+        padding-left: 40px;
+        font-size: 12px;
+    }
+    
+    .toc-level-4 .toc-link {
+        padding-left: 52px;
+        font-size: 11px;
+    }
+    
+    .toc-level-5 .toc-link {
+        padding-left: 64px;
+        font-size: 10px;
+    }
+    
+    .toc-level-6 .toc-link {
+        padding-left: 76px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .toc-floating-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+        top: 65px;
+        left: 10px;
+    }
+    
+    .toc-sidebar {
+        width: calc(100vw - 40px);
+        left: calc(-100vw + 20px);
+    }
+    
+    .toc-sidebar.show {
+        left: 20px;
+    }
+}
+
+/* 다크 모드 지원 */
+[data-theme="dark"] .toc-floating-btn {
+    background: #2a2d32 !important;
+    border-color: #3a3d42 !important;
+    color: #3eb0ef !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .toc-floating-btn:hover {
+    border-color: #3eb0ef !important;
+    box-shadow: 0 6px 20px rgba(62, 176, 239, 0.4) !important;
+}
+
+[data-theme="dark"] .toc-floating-btn.active {
+    background: #3eb0ef !important;
+    color: #fff !important;
+    border-color: #3eb0ef !important;
+}
+
+[data-theme="dark"] .toc-sidebar {
+    background: #2a2d32 !important;
+    border-right-color: #3a3d42 !important;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .toc-sidebar-header {
+    background: linear-gradient(135deg, #1f2124 0%, #2a2d32 100%) !important;
+    border-bottom-color: #3a3d42 !important;
+}
+
+[data-theme="dark"] .toc-sidebar-header h4 {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .toc-count {
+    color: #c5d2d9 !important;
+}
+
+[data-theme="dark"] .toc-close-btn {
+    color: #c5d2d9 !important;
+}
+
+[data-theme="dark"] .toc-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .toc-link {
+    color: #c5d2d9 !important;
+}
+
+[data-theme="dark"] .toc-link:hover {
+    color: #ffffff !important;
+    background-color: #1f2124 !important;
+    border-left-color: #3a3d42 !important;
+}
+
+[data-theme="dark"] .toc-link.active {
+    color: #3eb0ef !important;
+    background-color: rgba(62, 176, 239, 0.15) !important;
+    border-left-color: #3eb0ef !important;
+}
+
+[data-theme="dark"] .toc-sidebar-nav::-webkit-scrollbar-track {
+    background: #1f2124 !important;
+}
+
+[data-theme="dark"] .toc-sidebar-nav::-webkit-scrollbar-thumb {
+    background: #3a3d42 !important;
+}
+
+[data-theme="dark"] .toc-sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: #4a4d52 !important;
+}
+
+/* 시스템 다크 모드 지원 */
+@media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) .toc-floating-btn {
+        background: #2a2d32;
+        border-color: #3a3d42;
+        color: #3eb0ef;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    body:not([data-theme="light"]) .toc-floating-btn:hover {
+        border-color: #3eb0ef;
+        box-shadow: 0 6px 20px rgba(62, 176, 239, 0.4);
+    }
+    
+    body:not([data-theme="light"]) .toc-floating-btn.active {
+        background: #3eb0ef;
+        color: #fff;
+        border-color: #3eb0ef;
+    }
+    
+    body:not([data-theme="light"]) .toc-sidebar {
+        background: #2a2d32;
+        border-right-color: #3a3d42;
+        box-shadow: 2px 0 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    body:not([data-theme="light"]) .toc-sidebar-header {
+        background: linear-gradient(135deg, #1f2124 0%, #2a2d32 100%);
+        border-bottom-color: #3a3d42;
+    }
+    
+    body:not([data-theme="light"]) .toc-sidebar-header h4 {
+        color: #ffffff;
+    }
+    
+    body:not([data-theme="light"]) .toc-count {
+        color: #c5d2d9;
+    }
+    
+    body:not([data-theme="light"]) .toc-close-btn {
+        color: #c5d2d9;
+    }
+    
+    body:not([data-theme="light"]) .toc-close-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+    }
+    
+    body:not([data-theme="light"]) .toc-link {
+        color: #c5d2d9;
+    }
+    
+    body:not([data-theme="light"]) .toc-link:hover {
+        color: #ffffff;
+        background-color: #1f2124;
+        border-left-color: #3a3d42;
+    }
+    
+    body:not([data-theme="light"]) .toc-link.active {
+        color: #3eb0ef;
+        background-color: rgba(62, 176, 239, 0.15);
+        border-left-color: #3eb0ef;
+    }
+}
+
+/* 애니메이션 효과 */
+@keyframes slideInLeft {
+    from {
+        left: -350px;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(62, 176, 239, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(62, 176, 239, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(62, 176, 239, 0);
+    }
+}
+
+.toc-floating-btn.active {
+    animation: pulse 2s infinite;
+}
+
+.toc-sidebar.show {
+    animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 호버 효과 */
+.toc-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.toc-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(62, 176, 239, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.toc-link:hover::after {
+    left: 100%;
+}

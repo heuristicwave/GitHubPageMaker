@@ -1,12 +1,13 @@
 <form method="post" action="/subscribe/" class="">
-    <input class="confirm" type="hidden" name="confirm"  />
-    <input class="location" type="hidden" name="location"  />
-    <input class="referrer" type="hidden" name="referrer"  />
+    <input class="confirm" type="hidden" name="confirm" />
+    <input class="location" type="hidden" name="location" />
+    <input class="referrer" type="hidden" name="referrer" />
 
     <div class="form-group">
         <input class="subscribe-email" type="url" name="rss url" value="https://heuristicwave.github.io" readonly />
     </div>
     <!--To Do Rss Web Font <i class="fas fa-rss"></i> -->
     <button class="" type="submit" {% unless site.subscribe %}disabled{% endunless %}><span>Copy</span></button>
-    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+    <script
+        type="text/javascript">(function (g, h, o, s, t) { h[o]('.location')[s] = h[o]('.location')[s] || g.location.href; h[o]('.referrer')[s] = h[o]('.referrer')[s] || h.referrer; })(window, document, 'querySelector', 'value');</script>
 </form>

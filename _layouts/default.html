@@ -19,6 +19,11 @@
     <!-- Custom.css -->
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/built/custom.css" />
     
+    <!-- TOC CSS - 포스트 페이지에서만 로드 -->
+    {% if page.layout == 'post' %}
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/toc.css" />
+    {% endif %}
+    
     <!-- Inline Dark Theme CSS for immediate effect -->
     <style>
     /* Dark Theme Styles */
@@ -953,6 +958,8 @@
     <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
     {% if page.class == "post-template" %}
         {% include post-scripts.html %}
+        <!-- TOC JavaScript - 포스트 페이지에서만 로드 -->
+        <script src="{{ site.baseurl }}assets/js/toc.js"></script>
     {% elsif page.class == "page-template" %}
         {% include page-scripts.html %}
     {% endif %}

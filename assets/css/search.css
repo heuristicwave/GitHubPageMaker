@@ -1,0 +1,370 @@
+/* Search 기능을 위한 CSS 설정
+/* ---------------------------------------------------------- */
+
+/* 검색 컨테이너 */
+.search-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+.search-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.search-title {
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+/* 검색 폼 */
+.search-form-wrapper {
+    margin-bottom: var(--spacing-xl);
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    border: 2px solid var(--border-primary);
+    transition: all var(--transition-fast);
+}
+
+.search-input-wrapper:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 20px var(--shadow-accent);
+}
+
+.search-input {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-base);
+    border: none;
+    outline: none;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.search-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.search-button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-button:hover {
+    background: color(var(--color-primary) l(-10%));
+}
+
+/* 검색 상태 */
+.search-status {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.search-count {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.search-no-results {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* 검색 결과 */
+.search-results-wrapper {
+    margin-top: var(--spacing-lg);
+}
+
+.search-results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-result-item {
+    margin-bottom: var(--spacing-lg);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition-fast);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.search-result-item:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 16px var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.search-result-link {
+    display: block;
+    padding: var(--spacing-lg);
+    text-decoration: none;
+    color: inherit;
+}
+
+.search-result-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-sm) 0;
+    line-height: var(--line-height-tight);
+}
+
+.search-result-link:hover .search-result-title {
+    color: var(--color-primary);
+}
+
+.search-result-excerpt {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: var(--line-height-base);
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.search-result-excerpt mark {
+    background: var(--color-warning);
+    color: var(--text-primary);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.search-result-category {
+    display: inline-block;
+    padding: 4px 8px;
+    background: var(--color-primary);
+    color: white;
+    font-size: var(--font-size-xs);
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+/* 결과 없음 스타일 */
+.no-results {
+    text-align: center;
+    padding: var(--spacing-xxl);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-primary);
+}
+
+.no-results-content h3 {
+    font-size: var(--font-size-lg);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.no-results-content p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* 모달 검색 스타일 */
+.modal-search-count {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.modal-search-no-results {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.modal-search-item {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-primary);
+    transition: all var(--transition-fast);
+}
+
+.modal-search-item:hover {
+    border-color: var(--color-primary);
+    background: var(--bg-tertiary);
+}
+
+.modal-search-link-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.modal-search-title {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-xs) 0;
+    line-height: var(--line-height-tight);
+}
+
+.modal-search-link-item:hover .modal-search-title {
+    color: var(--color-primary);
+}
+
+.modal-search-excerpt {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    line-height: var(--line-height-base);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.modal-search-excerpt mark {
+    background: var(--color-warning);
+    color: var(--text-primary);
+    padding: 1px 3px;
+    border-radius: 2px;
+}
+
+.modal-search-category {
+    display: inline-block;
+    padding: 2px 6px;
+    background: var(--color-primary);
+    color: white;
+    font-size: 10px;
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+.modal-search-more {
+    text-align: center;
+    padding: var(--spacing-sm);
+    border-top: 1px solid var(--border-primary);
+    margin-top: var(--spacing-sm);
+}
+
+.modal-search-more-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+.modal-search-more-link:hover {
+    text-decoration: underline;
+}
+
+.modal-no-results {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--text-secondary);
+}
+
+/* 다크 테마 지원 */
+[data-theme="dark"] .search-input-wrapper {
+    border-color: var(--border-primary);
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .search-input {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .search-result-item {
+    background: var(--bg-tertiary);
+    border-color: var(--border-primary);
+}
+
+[data-theme="dark"] .search-result-excerpt mark,
+[data-theme="dark"] .modal-search-excerpt mark {
+    background: var(--color-warning);
+    color: var(--text-inverse);
+}
+
+[data-theme="dark"] .no-results {
+    background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .modal-search-item {
+    background: var(--bg-tertiary);
+    border-color: var(--border-primary);
+}
+
+[data-theme="dark"] .modal-search-item:hover {
+    background: var(--bg-secondary);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .search-container {
+        padding: var(--spacing-md);
+    }
+    
+    .search-input-wrapper {
+        max-width: 100%;
+    }
+    
+    .search-result-link {
+        padding: var(--spacing-md);
+    }
+    
+    .search-title {
+        font-size: var(--font-size-xl);
+    }
+    
+    .modal-search-item {
+        padding: var(--spacing-xs);
+    }
+}
+
+/* 기존 mylist 스타일 (하위 호환성) */
+ul.mylist li, ol.mylist li {
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #efefef;
+    font-size: 12px;
+}
+
+ul.mylist li:last-child,
+ol.mylist li:last-child {
+    border-bottom: 0px;
+}
+
+ul.mylist li,
+ol.mylist li {
+    -webkit-transition: background-color 0.3s linear;
+    -moz-transition: background-color 0.3s linear;
+    -ms-transition: background-color 0.3s linear;
+    -o-transition: background-color 0.3s linear;
+    transition: background-color 0.3s linear;
+}
+
+ul.mylist li:hover,
+ol.mylist li:hover {
+    background-color: #f6f0b6;
+}
+
+/* Dark theme support for mylist */
+[data-theme="dark"] ul.mylist li,
+[data-theme="dark"] ol.mylist li {
+    border-bottom-color: var(--border-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] ul.mylist li:hover,
+[data-theme="dark"] ol.mylist li:hover {
+    background-color: var(--bg-tertiary);
+}
