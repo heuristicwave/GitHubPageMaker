@@ -144,6 +144,31 @@ body {
     display: none;
 }
 
+.post-template .site-header,
+.page-template .site-header {
+    background: #15171a;
+}
+
+.post-template .site-header:before,
+.post-template .site-header:after,
+.page-template .site-header:before,
+.page-template .site-header:after {
+    display: none;
+}
+
+.tag-template .site-header.no-cover,
+.author-template .site-header.no-cover {
+    background: linear-gradient(135deg, #15171a 0%, #1f3b57 100%);
+}
+
+.tag-template .site-header.no-cover .site-title,
+.tag-template .site-header.no-cover .site-description,
+.author-template .site-header.no-cover .site-title,
+.author-template .site-header.no-cover .site-description {
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+}
+
 .site-header-content {
     display: flex;
     flex-direction: column;
@@ -195,8 +220,8 @@ body {
     z-index: 300;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    overflow-y: hidden;
+    align-items: center;
+    overflow: hidden;
     height: 40px;
     font-size: 1.2rem;
 }
@@ -204,15 +229,30 @@ body {
 .site-nav-left {
     display: flex;
     align-items: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin-right: 10px;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+}
+
+.site-nav-menu-scroll {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 40px;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    margin-right: 10px;
-    padding-bottom: 80px;
-    letter-spacing: 0.4px;
-    white-space: nowrap;
-
+    scrollbar-width: none;
     -ms-overflow-scrolling: touch;
+}
+
+.site-nav-menu-scroll::-webkit-scrollbar {
+    display: none;
 }
 
 /* Site Nav Hack Explanation (above):
@@ -247,7 +287,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 
 .nav {
     display: flex;
-    margin: 0 0 0 -12px;
+    margin: 0;
     padding: 0;
     list-style: none;
 }
@@ -1487,6 +1527,7 @@ Usage (In Ghost editor):
 }
 
 .floating-header-share-tw,
+.floating-header-share-li,
 .floating-header-share-fb {
     display: block;
     align-items: center;
@@ -1499,7 +1540,11 @@ Usage (In Ghost editor):
 }
 
 .floating-header-share-tw {
-    background: #33b1ff;
+    background: #111111;
+}
+
+.floating-header-share-li {
+    background: #0a66c2;
 }
 
 .floating-header-share-fb {
@@ -1558,6 +1603,7 @@ Usage (In Ghost editor):
         font-size: 1.5rem;
     }
     .floating-header-share-tw,
+    .floating-header-share-li,
     .floating-header-share-fb {
         width: 40px;
         height: 40px;

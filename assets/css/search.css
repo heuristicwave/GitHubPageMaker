@@ -180,7 +180,170 @@
     margin: 0;
 }
 
+/* 내비게이션 검색 버튼 */
+.site-nav-right .subscribe-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 1.3rem;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 0;
+    opacity: 0.92;
+    transition: background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+.site-nav-right .subscribe-button:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+    opacity: 1;
+    text-decoration: none;
+}
+
+.subscribe-button-icon {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    stroke-width: 2.2;
+}
+
 /* 모달 검색 스타일 */
+.subscribe-overlay {
+    background: rgba(5, 24, 36, 0.96);
+    backdrop-filter: none;
+}
+
+.subscribe-overlay-content {
+    width: min(720px, calc(100vw - 40px));
+    max-height: calc(100vh - 80px);
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    color: #fff;
+    text-align: left;
+}
+
+.subscribe-overlay-logo {
+    position: static;
+    display: block;
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 18px;
+    object-fit: contain;
+}
+
+.subscribe-overlay-kicker {
+    margin: 0 0 8px;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 1.2rem;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.subscribe-overlay-title {
+    display: block;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(3.4rem, 6vw, 5.6rem);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.subscribe-overlay-description {
+    max-width: none;
+    margin: 14px auto 30px;
+    color: rgba(255, 255, 255, 0.74);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+    font-size: 1.7rem;
+    line-height: 1.5;
+    font-weight: 400;
+    text-align: center;
+    opacity: 1;
+}
+
+.modal-search-container {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    color: #15171a;
+    overflow: hidden;
+}
+
+.modal-search-form {
+    display: flex;
+    gap: 10px;
+    padding: 18px;
+    border-bottom: 1px solid #e5eff5;
+    background: #f8fbfd;
+}
+
+.modal-search-input {
+    flex: 1;
+    min-width: 0;
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid #d6e2e8;
+    border-radius: 8px;
+    background: #fff;
+    color: #15171a;
+    font-size: 1.6rem;
+    line-height: 1;
+    outline: none;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.modal-search-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(62, 176, 239, 0.14);
+}
+
+.subscribe-overlay .modal-search-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: var(--color-primary);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 10px 22px rgba(62, 176, 239, 0.24);
+    transition: background-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.subscribe-overlay .modal-search-button:hover {
+    background: #229edb;
+    box-shadow: 0 12px 26px rgba(62, 176, 239, 0.32);
+    transform: translateY(-1px);
+}
+
+.modal-search-status {
+    min-height: 34px;
+    padding: 14px 18px 0;
+}
+
+.modal-search-results {
+    max-height: min(46vh, 430px);
+    padding: 8px 18px 18px;
+    overflow-y: auto;
+}
+
 .modal-search-count {
     font-size: var(--font-size-xs);
     color: var(--text-secondary);
@@ -195,20 +358,23 @@
 
 .modal-search-item {
     margin-bottom: var(--spacing-md);
-    padding: var(--spacing-sm);
-    background: var(--bg-secondary);
-    border-radius: var(--radius-sm);
+    padding: 0;
+    background: #fff;
+    border-radius: 8px;
     border: 1px solid var(--border-primary);
     transition: all var(--transition-fast);
+    overflow: hidden;
 }
 
 .modal-search-item:hover {
     border-color: var(--color-primary);
-    background: var(--bg-tertiary);
+    background: #f8fbfd;
+    box-shadow: 0 8px 24px rgba(39, 44, 49, 0.08);
 }
 
 .modal-search-link-item {
     display: block;
+    padding: 14px 16px;
     text-decoration: none;
     color: inherit;
 }
@@ -251,7 +417,7 @@
 
 .modal-search-more {
     text-align: center;
-    padding: var(--spacing-sm);
+    padding: 14px 0 0;
     border-top: 1px solid var(--border-primary);
     margin-top: var(--spacing-sm);
 }
@@ -264,6 +430,24 @@
 }
 
 .modal-search-more-link:hover {
+    text-decoration: underline;
+}
+
+.modal-search-footer {
+    padding: 14px 18px 18px;
+    border-top: 1px solid #e5eff5;
+    background: #f8fbfd;
+    text-align: right;
+}
+
+.modal-search-link {
+    color: var(--color-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.modal-search-link:hover {
     text-decoration: underline;
 }
 
@@ -307,6 +491,23 @@
     background: var(--bg-secondary);
 }
 
+[data-theme="dark"] .modal-search-container {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .modal-search-form,
+[data-theme="dark"] .modal-search-footer {
+    background: var(--bg-tertiary);
+    border-color: var(--border-secondary);
+}
+
+[data-theme="dark"] .modal-search-input {
+    background: var(--bg-primary);
+    border-color: var(--border-secondary);
+    color: var(--text-primary);
+}
+
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     .search-container {
@@ -326,7 +527,25 @@
     }
     
     .modal-search-item {
-        padding: var(--spacing-xs);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .subscribe-overlay-content {
+        width: calc(100vw - 24px);
+        max-height: calc(100vh - 48px);
+    }
+
+    .modal-search-form {
+        padding: 14px;
+    }
+
+    .modal-search-results {
+        max-height: 44vh;
+        padding: 8px 14px 14px;
+    }
+
+    .modal-search-footer {
+        padding: 12px 14px 14px;
     }
 }
 

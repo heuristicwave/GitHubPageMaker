@@ -476,8 +476,9 @@
                 {% if site.logo %}
                     <img class="subscribe-overlay-logo" src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.title }}" />
                 {% endif %}
+                <p class="subscribe-overlay-kicker">Heuristic Wave Blog</p>
                 <h1 class="subscribe-overlay-title">블로그 검색</h1>
-                <p class="subscribe-overlay-description">원하는 글을 빠르게 찾아보세요</p>
+                <p class="subscribe-overlay-description">제목, 카테고리, 본문 키워드로 빠르게 찾아보세요.</p>
                 
                 <div class="modal-search-container">
                     <div class="modal-search-form">
@@ -494,7 +495,7 @@
                     <div class="modal-search-results" id="modal-search-results"></div>
                     
                     <div class="modal-search-footer">
-                        <a href="/search.html" class="modal-search-link">고급 검색 페이지로 이동 →</a>
+                        <a href="/search.html" class="modal-search-link">전체 검색 결과 보기 →</a>
                     </div>
                 </div>
             </div>
@@ -511,6 +512,19 @@
     
     <!-- Modal Search Script -->
     {% if site.subscribers %}
+    <script>
+        window.store = window.store || {
+        {% for post in site.posts %}
+            "{{ post.url | slugify }}": {
+                "title": "{{ post.title | xml_escape }}",
+                "author": "{{ post.author | xml_escape }}",
+                "category": "{{ post.category | xml_escape }}",
+                "content": {{ post.content | strip_html | strip_newlines | jsonify }},
+                "url": "{{ post.url | xml_escape }}"
+            }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+        };
+    </script>
     <script src="{{ site.baseurl }}assets/js/lunr.js"></script>
     <script src="{{ site.baseurl }}assets/js/modal-search.js"></script>
     {% endif %}
