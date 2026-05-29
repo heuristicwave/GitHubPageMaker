@@ -1,212 +1,143 @@
----
----
+/* Table of contents for post pages. Desktop uses a sticky left rail; smaller
+   screens fall back to the floating button and slide-out panel. */
 
-/* TOC Floating Button Styles */
+.post-template .site-main > .inner.has-toc {
+    display: grid;
+    grid-template-columns: minmax(220px, 260px) minmax(0, 1040px);
+    gap: 32px;
+    align-items: start;
+    max-width: 1624px;
+}
+
+.post-template .site-main > .inner.has-toc .post-full {
+    grid-column: 2;
+    min-width: 0;
+    width: 100%;
+}
+
 .toc-floating-btn {
-    position: fixed;
-    top: 80px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    background: #fff;
-    border: 2px solid #e5eff5;
-    border-radius: 50%;
-    color: #3eb0ef;
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 9999;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: none;
 }
 
-.toc-floating-btn:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(62, 176, 239, 0.3);
-    border-color: #3eb0ef;
-}
-
-.toc-floating-btn.active {
-    background: #3eb0ef;
-    color: #fff;
-    border-color: #3eb0ef;
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(62, 176, 239, 0.4);
-}
-
-/* TOC Sidebar Styles */
 .toc-sidebar {
     position: fixed;
-    top: 0;
-    left: -350px;
-    width: 320px;
-    height: 100vh;
-    background: #fff;
-    border-right: 1px solid #e5eff5;
-    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
-    z-index: 9998;
-    font-size: 14px;
+    top: 96px;
+    left: max(4vw, calc((100vw - 1624px) / 2));
+    z-index: 40;
+    width: 260px;
+    max-height: calc(100vh - 120px);
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.toc-sidebar.show {
-    left: 0;
-}
-
-/* 사이드바가 열렸을 때 body 오버레이 */
-body.toc-sidebar-open::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 9997;
-    opacity: 0;
-    animation: fadeInOverlay 0.4s ease forwards;
-}
-
-@keyframes fadeInOverlay {
-    to {
-        opacity: 1;
-    }
+    border: 1px solid #e5eff5;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(39, 44, 49, 0.08);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
+    font-size: 13px;
 }
 
 .toc-sidebar-header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 8px;
     align-items: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 14px 16px 12px;
     border-bottom: 1px solid #e5eff5;
+    background: #f8fbfd;
 }
 
 .toc-sidebar-header h4 {
-    margin: 0 0 4px 0;
-    font-size: 18px;
-    font-weight: 600;
-    color: #15171A;
+    grid-column: 1 / 2;
+    margin: 0;
+    color: #15171a;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
 }
 
 .toc-count {
-    font-size: 12px;
+    grid-column: 1 / 2;
     color: #738a94;
+    font-size: 11px;
     font-weight: 500;
-    margin-right: auto;
-    margin-left: 8px;
+    line-height: 1.3;
 }
 
 .toc-close-btn {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: #738a94;
-    cursor: pointer;
-    padding: 4px;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    line-height: 1;
-}
-
-.toc-close-btn:hover {
-    background: rgba(0, 0, 0, 0.1);
-    color: #15171A;
+    display: none;
 }
 
 .toc-sidebar-nav {
-    height: calc(100vh - 80px);
+    max-height: calc(100vh - 190px);
     overflow-y: auto;
-    padding: 16px 0;
+    padding: 8px 0;
 }
 
 .toc-sidebar-list {
-    list-style: none;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 .toc-item {
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 .toc-link {
-    display: block;
-    padding: 12px 20px;
-    color: #738a94;
-    text-decoration: none;
-    line-height: 1.5;
-    transition: all 0.3s ease;
-    border-left: 4px solid transparent;
-    font-size: 14px;
     position: relative;
+    display: block;
+    overflow: hidden;
+    padding: 8px 14px 8px 16px;
+    border-left: 3px solid transparent;
+    color: #5d7179;
+    font-size: 13px;
+    line-height: 1.45;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
 }
 
 .toc-link:hover {
-    color: #15171A;
-    background-color: #f8f9fa;
+    border-left-color: #c9d8df;
+    background: #f6f9fb;
+    color: #15171a;
     text-decoration: none;
-    transform: translateX(4px);
-    border-left-color: #dee2e6;
 }
 
 .toc-link.active {
-    color: #3eb0ef;
-    background-color: rgba(62, 176, 239, 0.1);
     border-left-color: #3eb0ef;
-    font-weight: 600;
-    transform: translateX(4px);
-}
-
-.toc-link.active::before {
-    content: '';
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 6px;
-    height: 6px;
-    background: #3eb0ef;
-    border-radius: 50%;
-}
-
-/* 레벨별 들여쓰기 */
-.toc-level-1 .toc-link {
-    padding-left: 20px;
+    background: rgba(62, 176, 239, 0.1);
+    color: #1f8ac0;
     font-weight: 700;
-    font-size: 15px;
+}
+
+.toc-level-1 .toc-link {
+    padding-left: 16px;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .toc-level-2 .toc-link {
-    padding-left: 36px;
-    font-size: 14px;
+    padding-left: 16px;
 }
 
 .toc-level-3 .toc-link {
-    padding-left: 52px;
-    font-size: 13px;
-}
-
-.toc-level-4 .toc-link {
-    padding-left: 68px;
+    padding-left: 28px;
     font-size: 12px;
 }
 
-.toc-level-5 .toc-link {
-    padding-left: 84px;
-    font-size: 11px;
+.toc-level-4 .toc-link {
+    padding-left: 40px;
+    font-size: 12px;
 }
 
+.toc-level-5 .toc-link,
 .toc-level-6 .toc-link {
-    padding-left: 100px;
+    padding-left: 52px;
     font-size: 11px;
 }
 
-/* 스크롤바 스타일링 */
 .toc-sidebar-nav::-webkit-scrollbar {
     width: 8px;
 }
@@ -216,140 +147,31 @@ body.toc-sidebar-open::before {
 }
 
 .toc-sidebar-nav::-webkit-scrollbar-thumb {
-    background: #dee2e6;
-    border-radius: 4px;
+    border-radius: 999px;
+    background: #d6e2e8;
 }
 
 .toc-sidebar-nav::-webkit-scrollbar-thumb:hover {
-    background: #adb5bd;
-}
-
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .toc-floating-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 16px;
-        top: 70px;
-        left: 15px;
-    }
-    
-    .toc-sidebar {
-        width: 280px;
-        left: -300px;
-    }
-    
-    .toc-sidebar-header {
-        padding: 16px;
-    }
-    
-    .toc-sidebar-header h4 {
-        font-size: 16px;
-    }
-    
-    .toc-count {
-        font-size: 11px;
-    }
-    
-    .toc-link {
-        padding: 10px 16px;
-        font-size: 13px;
-    }
-    
-    .toc-level-1 .toc-link {
-        padding-left: 16px;
-        font-size: 14px;
-    }
-    
-    .toc-level-2 .toc-link {
-        padding-left: 28px;
-    }
-    
-    .toc-level-3 .toc-link {
-        padding-left: 40px;
-        font-size: 12px;
-    }
-    
-    .toc-level-4 .toc-link {
-        padding-left: 52px;
-        font-size: 11px;
-    }
-    
-    .toc-level-5 .toc-link {
-        padding-left: 64px;
-        font-size: 10px;
-    }
-    
-    .toc-level-6 .toc-link {
-        padding-left: 76px;
-        font-size: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .toc-floating-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 14px;
-        top: 65px;
-        left: 10px;
-    }
-    
-    .toc-sidebar {
-        width: calc(100vw - 40px);
-        left: calc(-100vw + 20px);
-    }
-    
-    .toc-sidebar.show {
-        left: 20px;
-    }
-}
-
-/* 다크 모드 지원 */
-[data-theme="dark"] .toc-floating-btn {
-    background: #2a2d32 !important;
-    border-color: #3a3d42 !important;
-    color: #3eb0ef !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-}
-
-[data-theme="dark"] .toc-floating-btn:hover {
-    border-color: #3eb0ef !important;
-    box-shadow: 0 6px 20px rgba(62, 176, 239, 0.4) !important;
-}
-
-[data-theme="dark"] .toc-floating-btn.active {
-    background: #3eb0ef !important;
-    color: #fff !important;
-    border-color: #3eb0ef !important;
+    background: #b8c8d0;
 }
 
 [data-theme="dark"] .toc-sidebar {
+    border-color: #3a3d42 !important;
     background: #2a2d32 !important;
-    border-right-color: #3a3d42 !important;
-    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35) !important;
 }
 
 [data-theme="dark"] .toc-sidebar-header {
-    background: linear-gradient(135deg, #1f2124 0%, #2a2d32 100%) !important;
     border-bottom-color: #3a3d42 !important;
+    background: #1f2124 !important;
 }
 
 [data-theme="dark"] .toc-sidebar-header h4 {
-    color: #ffffff !important;
+    color: #fff !important;
 }
 
 [data-theme="dark"] .toc-count {
     color: #c5d2d9 !important;
-}
-
-[data-theme="dark"] .toc-close-btn {
-    color: #c5d2d9 !important;
-}
-
-[data-theme="dark"] .toc-close-btn:hover {
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: #ffffff !important;
 }
 
 [data-theme="dark"] .toc-link {
@@ -357,15 +179,15 @@ body.toc-sidebar-open::before {
 }
 
 [data-theme="dark"] .toc-link:hover {
-    color: #ffffff !important;
-    background-color: #1f2124 !important;
-    border-left-color: #3a3d42 !important;
+    border-left-color: #4a4d52 !important;
+    background: #1f2124 !important;
+    color: #fff !important;
 }
 
 [data-theme="dark"] .toc-link.active {
-    color: #3eb0ef !important;
-    background-color: rgba(62, 176, 239, 0.15) !important;
     border-left-color: #3eb0ef !important;
+    background: rgba(62, 176, 239, 0.15) !important;
+    color: #3eb0ef !important;
 }
 
 [data-theme="dark"] .toc-sidebar-nav::-webkit-scrollbar-track {
@@ -376,122 +198,161 @@ body.toc-sidebar-open::before {
     background: #3a3d42 !important;
 }
 
-[data-theme="dark"] .toc-sidebar-nav::-webkit-scrollbar-thumb:hover {
-    background: #4a4d52 !important;
-}
-
-/* 시스템 다크 모드 지원 */
 @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) .toc-floating-btn {
-        background: #2a2d32;
-        border-color: #3a3d42;
-        color: #3eb0ef;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-    
-    body:not([data-theme="light"]) .toc-floating-btn:hover {
-        border-color: #3eb0ef;
-        box-shadow: 0 6px 20px rgba(62, 176, 239, 0.4);
-    }
-    
-    body:not([data-theme="light"]) .toc-floating-btn.active {
-        background: #3eb0ef;
-        color: #fff;
-        border-color: #3eb0ef;
-    }
-    
     body:not([data-theme="light"]) .toc-sidebar {
+        border-color: #3a3d42;
         background: #2a2d32;
-        border-right-color: #3a3d42;
-        box-shadow: 2px 0 20px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     }
-    
+
     body:not([data-theme="light"]) .toc-sidebar-header {
-        background: linear-gradient(135deg, #1f2124 0%, #2a2d32 100%);
         border-bottom-color: #3a3d42;
+        background: #1f2124;
     }
-    
+
     body:not([data-theme="light"]) .toc-sidebar-header h4 {
-        color: #ffffff;
+        color: #fff;
     }
-    
-    body:not([data-theme="light"]) .toc-count {
-        color: #c5d2d9;
-    }
-    
-    body:not([data-theme="light"]) .toc-close-btn {
-        color: #c5d2d9;
-    }
-    
-    body:not([data-theme="light"]) .toc-close-btn:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: #ffffff;
-    }
-    
+
+    body:not([data-theme="light"]) .toc-count,
     body:not([data-theme="light"]) .toc-link {
         color: #c5d2d9;
     }
-    
+
     body:not([data-theme="light"]) .toc-link:hover {
-        color: #ffffff;
-        background-color: #1f2124;
-        border-left-color: #3a3d42;
+        border-left-color: #4a4d52;
+        background: #1f2124;
+        color: #fff;
     }
-    
+
     body:not([data-theme="light"]) .toc-link.active {
-        color: #3eb0ef;
-        background-color: rgba(62, 176, 239, 0.15);
         border-left-color: #3eb0ef;
+        background: rgba(62, 176, 239, 0.15);
+        color: #3eb0ef;
     }
 }
 
-/* 애니메이션 효과 */
-@keyframes slideInLeft {
-    from {
-        left: -350px;
+@media (max-width: 1320px) {
+    .post-template .site-main > .inner.has-toc {
+        display: block;
+        max-width: 1040px;
     }
-    to {
+
+    .toc-floating-btn {
+        position: fixed;
+        top: 78px;
+        left: 18px;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid #d6e2e8;
+        border-radius: 999px;
+        background: #fff;
+        box-shadow: 0 6px 18px rgba(39, 44, 49, 0.16);
+        color: #3eb0ef;
+        cursor: pointer;
+        font-size: 17px;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    }
+
+    .toc-floating-btn:hover,
+    .toc-floating-btn.active {
+        background: #3eb0ef;
+        box-shadow: 0 8px 22px rgba(62, 176, 239, 0.32);
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+    .toc-sidebar {
+        position: fixed;
+        top: 0;
+        left: -330px;
+        z-index: 9998;
+        width: 300px;
+        max-width: calc(100vw - 40px);
+        height: 100vh;
+        max-height: none;
+        border-width: 0 1px 0 0;
+        border-radius: 0;
+        box-shadow: 2px 0 20px rgba(39, 44, 49, 0.16);
+        transition: left 0.24s ease;
+    }
+
+    .toc-sidebar.show {
         left: 0;
     }
-}
 
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(62, 176, 239, 0.4);
+    body.toc-sidebar-open::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 9997;
+        background: rgba(0, 0, 0, 0.28);
+        pointer-events: none;
     }
-    70% {
-        box-shadow: 0 0 0 10px rgba(62, 176, 239, 0);
+
+    .toc-sidebar-header {
+        min-height: 64px;
+        padding: 16px;
     }
-    100% {
-        box-shadow: 0 0 0 0 rgba(62, 176, 239, 0);
+
+    .toc-close-btn {
+        grid-row: 1 / 3;
+        grid-column: 2 / 3;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: #738a94;
+        cursor: pointer;
+        font-size: 22px;
+        line-height: 1;
+    }
+
+    .toc-close-btn:hover {
+        background: rgba(0, 0, 0, 0.08);
+        color: #15171a;
+    }
+
+    .toc-sidebar-nav {
+        max-height: calc(100vh - 64px);
+    }
+
+    [data-theme="dark"] .toc-floating-btn {
+        border-color: #3a3d42 !important;
+        background: #2a2d32 !important;
+        color: #3eb0ef !important;
+    }
+
+    [data-theme="dark"] .toc-floating-btn:hover,
+    [data-theme="dark"] .toc-floating-btn.active {
+        background: #3eb0ef !important;
+        color: #fff !important;
     }
 }
 
-.toc-floating-btn.active {
-    animation: pulse 2s infinite;
-}
+@media (max-width: 480px) {
+    .toc-floating-btn {
+        top: 68px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
+    }
 
-.toc-sidebar.show {
-    animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
+    .toc-sidebar {
+        left: calc(-100vw + 20px);
+        width: calc(100vw - 40px);
+    }
 
-/* 호버 효과 */
-.toc-link {
-    position: relative;
-    overflow: hidden;
-}
-
-.toc-link::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(62, 176, 239, 0.1), transparent);
-    transition: left 0.5s ease;
-}
-
-.toc-link:hover::after {
-    left: 100%;
+    .toc-sidebar.show {
+        left: 20px;
+    }
 }
