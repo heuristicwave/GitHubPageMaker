@@ -157,10 +157,10 @@ npx gulp
 #### Jekyll 빌드
 ```bash
 # 개발 서버 실행 (실시간 리로드)
-bundle exec jekyll serve
+bundle exec jekyll serve --config _config.yml,_config.dev.yml
 
 # 개발 서버 (드래프트 포함)
-bundle exec jekyll serve --drafts
+bundle exec jekyll serve --drafts --config _config.yml,_config.dev.yml
 
 # 프로덕션 빌드
 bundle exec jekyll clean && bundle exec jekyll build
@@ -175,11 +175,25 @@ JEKYLL_ENV=production bundle exec jekyll build
 npx gulp css
 
 # 2. Jekyll 재빌드
-bundle exec jekyll clean && bundle exec jekyll build
+bundle exec jekyll clean && bundle exec jekyll build --config _config.yml,_config.dev.yml
 
 # 3. 개발 서버 재시작
-bundle exec jekyll serve
+bundle exec jekyll serve --config _config.yml,_config.dev.yml
 ```
+
+### 개발/운영 노출 분리
+
+운영에는 아직 노출하지 않고 개발 환경에서만 확인할 글은 front matter에 `published: false`를 추가합니다.
+
+```yaml
+published: false
+```
+
+- 개발 확인: `bundle exec jekyll serve --config _config.yml,_config.dev.yml`
+- 개발 빌드: `bundle exec jekyll build --config _config.yml,_config.dev.yml`
+- 운영 빌드: `JEKYLL_ENV=production bundle exec jekyll clean && bundle exec jekyll build`
+
+`_config.dev.yml`에는 `unpublished: true`가 설정되어 있어 `published: false` 포스트도 개발 화면에는 나타납니다. 운영 빌드는 이 설정을 사용하지 않으므로 해당 포스트의 목록과 상세 페이지가 생성되지 않습니다.
 
 ### 언제 어떤 명령어를 사용할까?
 
@@ -217,7 +231,7 @@ npx gulp css
 ```bash
 # 1. _posts/ 폴더에 새 마크다운 파일 생성
 # 2. Jekyll 서버 실행 (실시간 프리뷰)
-bundle exec jekyll serve --drafts
+bundle exec jekyll serve --drafts --config _config.yml,_config.dev.yml
 # 3. 브라우저에서 http://localhost:4000 확인
 ```
 
@@ -225,9 +239,9 @@ bundle exec jekyll serve --drafts
 ```bash
 # 1. _layouts/, _includes/, _config.yml 수정
 # 2. 클린 빌드 (캐시 초기화)
-bundle exec jekyll clean && bundle exec jekyll build
+bundle exec jekyll clean && bundle exec jekyll build --config _config.yml,_config.dev.yml
 # 3. 서버 재시작
-bundle exec jekyll serve
+bundle exec jekyll serve --config _config.yml,_config.dev.yml
 ```
 
 #### 🚀 배포 전 최종 빌드

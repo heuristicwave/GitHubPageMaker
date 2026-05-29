@@ -31,12 +31,18 @@ namespace :site do
   desc "Generate the site and serve locally"
   task :serve do
     check_destination
-    sh "bundle exec jekyll serve"
+    sh "bundle exec jekyll serve --config _config.yml,_config.dev.yml"
   end
 
   desc "Generate the site, serve locally and watch for changes"
   task :watch do
-    sh "bundle exec jekyll serve --watch"
+    sh "bundle exec jekyll serve --watch --config _config.yml,_config.dev.yml"
+  end
+
+  desc "Generate the site with development-only posts"
+  task :build_dev do
+    check_destination
+    sh "bundle exec jekyll build --config _config.yml,_config.dev.yml"
   end
 
   desc "Generate the site and push changes to remote origin"

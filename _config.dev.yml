@@ -1,0 +1,5 @@
+# Development-only Jekyll overrides.
+#
+# Posts with `published: false` are excluded from production builds by default,
+# but included when serving/building with this config.
+unpublished: true
