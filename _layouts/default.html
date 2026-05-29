@@ -852,8 +852,26 @@
         
         function setupScrollBehavior(button) {
             let isFloating = false;
+            let floatingActionsActive = false;
+            let floatingActionsBelowHeader = false;
+
+            function setFloatingActionsState(active, belowHeader) {
+                if (floatingActionsActive === active && floatingActionsBelowHeader === belowHeader) {
+                    return;
+                }
+                floatingActionsActive = active;
+                floatingActionsBelowHeader = belowHeader;
+                document.body.classList.toggle('post-floating-actions-active', active);
+                document.body.classList.toggle('post-floating-actions-below-header', active && belowHeader);
+                window.dispatchEvent(new CustomEvent('postFloatingActionsChange', {
+                    detail: {
+                        active: active,
+                        belowHeader: active && belowHeader
+                    }
+                }));
+            }
             
-            window.addEventListener('scroll', function() {
+            function updateFloatingButton() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 const shouldFloat = scrollTop > 200; // 200px 스크롤 후 플로팅 모드
                 
@@ -908,6 +926,7 @@
                     // 네비게이션 모드로 복원
                     isFloating = false;
                     button.removeAttribute('data-mode');
+                    setFloatingActionsState(false, false);
                     
                     // 원래 위치로 버튼 이동
                     const navRight = document.querySelector('.site-nav-right');
@@ -921,13 +940,19 @@
                 // 플로팅 헤더와 겹치지 않도록 조정
                 if (isFloating) {
                     const floatingHeader = document.querySelector('.floating-header');
-                    if (floatingHeader && floatingHeader.classList.contains('floating-active')) {
+                    const belowHeader = floatingHeader && floatingHeader.classList.contains('floating-active');
+                    if (belowHeader) {
                         button.style.top = '120px';
                     } else {
                         button.style.top = '80px';
                     }
+                    setFloatingActionsState(true, belowHeader);
                 }
-            }, { passive: true });
+            }
+
+            window.addEventListener('scroll', updateFloatingButton, { passive: true });
+            window.addEventListener('resize', updateFloatingButton, false);
+            updateFloatingButton();
         }
         
         function init() {
