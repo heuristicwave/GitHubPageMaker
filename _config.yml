@@ -102,6 +102,7 @@ destination: ./output/
 
 # exclude는 Jekyll컴파일 시 destination에 포함될 필요가 없는 것 명시
 exclude:
+  - AGENTS.md
   - README.md
   - Rakefile
   - Gemfile
