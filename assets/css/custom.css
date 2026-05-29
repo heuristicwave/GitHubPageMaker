@@ -1050,3 +1050,87 @@ All this is done for any sub-level being entered.
 .entry-title {
     font-size: large;
 }
+
+/* Post code blocks - keep Rouge/Monokai tokens readable in both themes */
+.post-full-content figure.highlight,
+.post-full-content .highlight,
+.post-full-content .highlight pre,
+.post-full-content pre.highlight,
+.post-full-content pre {
+    background: #272822 !important;
+    color: #f8f8f2 !important;
+    border-color: #3a3d42 !important;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+}
+
+.post-full-content .highlight code,
+.post-full-content pre code,
+.post-full-content pre code * {
+    background: transparent !important;
+    color: inherit;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.post-full-content .highlight code,
+.post-full-content pre code {
+    display: block;
+    max-width: 100%;
+    white-space: inherit;
+    word-break: inherit;
+}
+
+.post-full-content .highlight {
+    overflow-x: auto;
+    border-radius: 5px;
+    margin: 1.5em 0 3em;
+}
+
+.post-full-content .highlight pre {
+    margin: 0;
+    overflow-x: visible;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.post-full-content pre {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.post-full-content code:not(pre code):not(.highlight code) {
+    background: var(--whitegrey);
+    color: #15171a;
+    border: 0;
+}
+
+[data-theme="dark"] .post-full-content code:not(pre code):not(.highlight code) {
+    background-color: #2a2d32 !important;
+    color: #a4d037 !important;
+    border: 1px solid #3a3d42 !important;
+}
+
+.post-card-dev-badge {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 6px;
+    padding: 2px 7px;
+    border: 1px solid rgba(240, 82, 48, 0.35);
+    border-radius: 999px;
+    background: rgba(240, 82, 48, 0.1);
+    color: #f05230;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+}
+
+[data-theme="dark"] .post-card-dev-badge {
+    border-color: rgba(255, 122, 89, 0.45);
+    background: rgba(255, 122, 89, 0.16);
+    color: #ff9b7a;
+}

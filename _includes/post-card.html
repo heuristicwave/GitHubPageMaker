@@ -19,6 +19,9 @@
                             {% endif %}
                         {% endfor %}
                     {% endif %}
+                    {% if site.unpublished and post.published == false %}
+                        <span class="post-card-tags post-card-dev-badge">DEV</span>
+                    {% endif %}
 
                     <h2 class="post-card-title">{{ post.title }}</h2>
                 </header>
