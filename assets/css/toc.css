@@ -1,38 +1,87 @@
-/* Table of contents for post pages. Desktop uses a sticky left rail; smaller
-   screens fall back to the floating button and slide-out panel. */
+/* Table of contents for post pages. It shares the floating action behavior
+   with the theme toggle, appearing below it after the reader scrolls. */
 
 .post-template .site-main > .inner.has-toc {
-    display: grid;
-    grid-template-columns: minmax(220px, 260px) minmax(0, 1040px);
-    gap: 32px;
-    align-items: start;
-    max-width: 1624px;
+    max-width: 1040px;
 }
 
 .post-template .site-main > .inner.has-toc .post-full {
-    grid-column: 2;
     min-width: 0;
     width: 100%;
 }
 
 .toc-floating-btn {
+    position: fixed;
+    top: 142px;
+    right: 25px;
+    left: auto;
+    z-index: 9999;
     display: none;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #d6e2e8;
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(39, 44, 49, 0.16);
+    color: #3eb0ef;
+    cursor: pointer;
+    font-size: 17px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
 }
 
 .toc-sidebar {
     position: fixed;
-    top: 96px;
-    left: max(4vw, calc((100vw - 1624px) / 2));
-    z-index: 40;
-    width: 260px;
-    max-height: calc(100vh - 120px);
+    top: 202px;
+    right: 25px;
+    left: auto;
+    z-index: 9998;
+    width: 320px;
+    max-width: calc(100vw - 50px);
+    height: auto;
+    max-height: calc(100vh - 310px);
     overflow: hidden;
     border: 1px solid #e5eff5;
     border-radius: 8px;
     background: #fff;
-    box-shadow: 0 12px 30px rgba(39, 44, 49, 0.08);
+    box-shadow: 0 18px 38px rgba(39, 44, 49, 0.18);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
     font-size: 13px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+body.post-floating-actions-active .toc-floating-btn {
+    display: flex;
+}
+
+body.post-floating-actions-below-header .toc-floating-btn {
+    top: 182px;
+}
+
+.toc-floating-btn:hover,
+.toc-floating-btn.active {
+    background: #3eb0ef;
+    box-shadow: 0 8px 22px rgba(62, 176, 239, 0.32);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+body.post-floating-actions-below-header .toc-sidebar {
+    top: 242px;
+}
+
+.toc-sidebar.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+body.toc-sidebar-open::before {
+    display: none;
 }
 
 .toc-sidebar-header {
@@ -40,7 +89,8 @@
     grid-template-columns: 1fr auto;
     gap: 4px 8px;
     align-items: center;
-    padding: 14px 16px 12px;
+    min-height: 64px;
+    padding: 16px;
     border-bottom: 1px solid #e5eff5;
     background: #f8fbfd;
 }
@@ -63,11 +113,29 @@
 }
 
 .toc-close-btn {
-    display: none;
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #738a94;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.toc-close-btn:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: #15171a;
 }
 
 .toc-sidebar-nav {
-    max-height: calc(100vh - 190px);
+    max-height: calc(100vh - 374px);
     overflow-y: auto;
     padding: 8px 0;
 }
@@ -198,6 +266,18 @@
     background: #3a3d42 !important;
 }
 
+[data-theme="dark"] .toc-floating-btn {
+    border-color: #3a3d42 !important;
+    background: #2a2d32 !important;
+    color: #3eb0ef !important;
+}
+
+[data-theme="dark"] .toc-floating-btn:hover,
+[data-theme="dark"] .toc-floating-btn.active {
+    background: #3eb0ef !important;
+    color: #fff !important;
+}
+
 @media (prefers-color-scheme: dark) {
     body:not([data-theme="light"]) .toc-sidebar {
         border-color: #3a3d42;
@@ -229,126 +309,6 @@
         border-left-color: #3eb0ef;
         background: rgba(62, 176, 239, 0.15);
         color: #3eb0ef;
-    }
-}
-
-@media (max-width: 1800px) {
-    .post-template .site-main > .inner.has-toc {
-        display: block;
-        max-width: 1040px;
-    }
-
-    .toc-floating-btn {
-        position: fixed;
-        top: 142px;
-        right: 25px;
-        left: auto;
-        z-index: 9999;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        width: 48px;
-        height: 48px;
-        border: 1px solid #d6e2e8;
-        border-radius: 999px;
-        background: #fff;
-        box-shadow: 0 6px 18px rgba(39, 44, 49, 0.16);
-        color: #3eb0ef;
-        cursor: pointer;
-        font-size: 17px;
-        transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
-    }
-
-    body.post-floating-actions-active .toc-floating-btn {
-        display: flex;
-    }
-
-    body.post-floating-actions-below-header .toc-floating-btn {
-        top: 182px;
-    }
-
-    .toc-floating-btn:hover,
-    .toc-floating-btn.active {
-        background: #3eb0ef;
-        box-shadow: 0 8px 22px rgba(62, 176, 239, 0.32);
-        color: #fff;
-        transform: translateY(-1px);
-    }
-
-    .toc-sidebar {
-        position: fixed;
-        top: 202px;
-        right: 25px;
-        left: auto;
-        z-index: 9998;
-        width: 320px;
-        max-width: calc(100vw - 50px);
-        height: auto;
-        max-height: calc(100vh - 310px);
-        border-width: 1px;
-        border-radius: 8px;
-        box-shadow: 0 18px 38px rgba(39, 44, 49, 0.18);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-8px);
-        transition: opacity 0.18s ease, transform 0.18s ease;
-    }
-
-    body.post-floating-actions-below-header .toc-sidebar {
-        top: 242px;
-    }
-
-    .toc-sidebar.show {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-    }
-
-    body.toc-sidebar-open::before {
-        display: none;
-    }
-
-    .toc-sidebar-header {
-        min-height: 64px;
-        padding: 16px;
-    }
-
-    .toc-close-btn {
-        grid-row: 1 / 3;
-        grid-column: 2 / 3;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 32px;
-        height: 32px;
-        border: 0;
-        border-radius: 6px;
-        background: transparent;
-        color: #738a94;
-        cursor: pointer;
-        font-size: 22px;
-        line-height: 1;
-    }
-
-    .toc-close-btn:hover {
-        background: rgba(0, 0, 0, 0.08);
-        color: #15171a;
-    }
-
-    .toc-sidebar-nav {
-        max-height: calc(100vh - 374px);
-    }
-
-    [data-theme="dark"] .toc-floating-btn {
-        border-color: #3a3d42 !important;
-        background: #2a2d32 !important;
-        color: #3eb0ef !important;
-    }
-
-    [data-theme="dark"] .toc-floating-btn:hover,
-    [data-theme="dark"] .toc-floating-btn.active {
-        background: #3eb0ef !important;
-        color: #fff !important;
     }
 }
 
