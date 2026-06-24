@@ -6,6 +6,10 @@ ai:
   name: Artificial Intelligence
   description: AI/ML/DL
   cover: False
+lab:
+  name: lab
+  description: Experimental technical notes, prototypes, and architecture trials
+  cover: False
 aws:
   name: aws
   description: TIL - AWS
