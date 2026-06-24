@@ -48,7 +48,8 @@ author: HeuristicWave
 - Use `layout: post`, `current: post`, `navigation: True`, and `class: post-template` unless there is a clear local precedent for a different value.
 - Set `subclass` to the primary category style, such as `post tag-ai`, `post tag-aws`, `post tag-devops`, or `post tag-extracurricular`.
 - Prefer existing categories: `ai`, `aws`, `backend`, `devops`, `ppt`, `security`, and `uncategorized`.
-- Prefer existing tags where they fit. Common tags include `aws`, `devops`, `terraform`, `genai`, `ai`, `llm`, `database`, `security`, `backend`, `programming`, `serverless`, `event`, and `extracurricular`.
+- Prefer existing tags where they fit. Common tags include `aws`, `devops`, `terraform`, `genai`, `ai`, `llm`, `database`, `security`, `backend`, `programming`, `serverless`, `event`, `extracurricular`, and `lab`.
+- Add the `lab` tag to posts that document experimental technical trials, prototypes, early architecture ideas, proof-of-concept demos, or hands-on explorations intended to be collected later as lab notes. Use it alongside the normal subject tags, for example `tags: [aws, genai, lab]`.
 - If adding a new top-level tag/category that needs archive metadata, update `_data/tags.yml` consistently.
 
 ## Writing Style
