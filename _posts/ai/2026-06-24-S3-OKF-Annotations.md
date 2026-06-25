@@ -4,6 +4,7 @@ current: post
 cover: assets/built/images/background/s3-okf-ontology.svg
 navigation: True
 title: "Amazon S3 Annotations 1편: Open Knowledge Format 흉내내기"
+display_title: "Amazon S3 Annotations 1편:<br>Open Knowledge Format 흉내내기"
 date: 2026-06-24 00:00:00
 tags: [aws, genai, lab]
 class: post-template
